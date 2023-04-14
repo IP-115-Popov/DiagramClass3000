@@ -1,6 +1,8 @@
-﻿using DynamicData.Binding;
+﻿using Avalonia;
+using DynamicData.Binding;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,7 +30,13 @@ namespace DiagramClass.Models
         public string Margin
         {
             get => margin;
-            set => SetAndRaise(ref margin, value);
+            set
+            {
+                //Оповищаяем об зизменениях
+                SetAndRaise(ref margin, value);
+                //тригерим ивент оповешаюший конекторы об изменениях
+                MarginHandlerNotify?.Invoke(Avalonia.Point.Parse(margin));
+            }
         }
         public int Width
         {
@@ -40,5 +48,11 @@ namespace DiagramClass.Models
             get => height;
             set => SetAndRaise(ref height, value);
         }
+        //public void MarginHandlerNotifyImvoker(Avalonia.Point point)
+        //{
+
+        //}
+        public delegate void MarginHandler(Avalonia.Point point);
+        public event MarginHandler? MarginHandlerNotify;
     }
 }

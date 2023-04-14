@@ -34,12 +34,15 @@ namespace DiagramClass.Views
                     {
                         if (this.DataContext is MainWindowViewModel viewModel)
                         {
-                            //добавить конектор
-                            viewModel.CanvasList.Add( new Connector()
+                            //добавить конектор                           
+                            Connector conector = new Connector()
                             {
                                 StartPoint = pointerPressedEvent,
                                 EndPoint = pointerPressedEvent,
-                            });
+                                myClassA = myClass,
+                            };
+                            myClass.MarginHandlerNotify += conector.ChangeStartPoint;
+                            viewModel.CanvasList.Add(conector);
                             //события двиганья конектора
                             this.PointerMoved += PointerMoveDrawLine;
                             this.PointerReleased += PointerPressedReleasedDrawLine;
@@ -47,7 +50,7 @@ namespace DiagramClass.Views
                     }
                     else
                     {
-                        this.PointerMoved += PointerMoveDrawConectedLine;
+                        //this.PointerMoved += PointerMoveDrawConectedLine;
                         this.PointerMoved += PointerMoveDragShape;
                         this.PointerReleased += PointerReleasedDragShape;
                     }
@@ -89,6 +92,7 @@ namespace DiagramClass.Views
                 connector.EndPoint = new Avalonia.Point(
                         currentPointerPosition.X - 1,
                         currentPointerPosition.Y - 1);
+               
             }
         }
 
@@ -110,8 +114,9 @@ namespace DiagramClass.Views
             {
                 if (ellipse.DataContext is MyClass myClass)
                 {
-                    //Connector connector = viewModel.CanvasList[viewModel.CanvasList.Count - 1] as Connector;
-                    //connector.SecondRectangle = rectangle;
+                    Connector connector = viewModel.CanvasList[viewModel.CanvasList.Count - 1] as Connector;
+                    connector.myClassB = myClass;
+                    myClass.MarginHandlerNotify += connector.ChangeEndPoint;
                     return;
                 }     
             }
