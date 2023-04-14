@@ -10,15 +10,15 @@ namespace DiagramClass.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        private ObservableCollection<MyClass> canvasList;
+        private ObservableCollection<object> canvasList;
         public MainWindowViewModel()
         {
-            canvasList = new ObservableCollection<MyClass>
+            canvasList = new ObservableCollection<object>
             {
                 new MyClass()
             };
         }
-        private ObservableCollection<MyClass> CanvasList
+        private ObservableCollection<object> CanvasList
         {
             get => canvasList;
             set => this.RaiseAndSetIfChanged(ref canvasList, value);

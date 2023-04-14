@@ -4,6 +4,8 @@ using Avalonia.Controls.Shapes;
 using Avalonia.Input;
 using Avalonia.VisualTree;
 using DiagramClass.Models;
+using DiagramClass.ViewModels;
+using System.Drawing;
 using System.Linq;
 
 namespace DiagramClass.Views
@@ -14,16 +16,30 @@ namespace DiagramClass.Views
         {
             InitializeComponent();          
         }
-        private Point pointerPressedEvent;
-        private Point pointerPositionInShape;
+        private Avalonia.Point pointerPressedEvent;
+        private Avalonia.Point pointerPositionInShape;
         private void PointerPressedOnCanvas(object? sender, PointerPressedEventArgs pointerPressedEventArgs)
         {
             if (pointerPressedEventArgs.Source is Control control)
             {
                 if (control.DataContext is MyClass myClass)
-                {
-                    this.PointerMoved += PointerMoveDragShape;
-                    this.PointerReleased += PointerReleasedDragShape;
+                {                 
+
+                    if (pointerPressedEventArgs.Source is Ellipse)
+                    {
+                        if (this.DataContext is MainWindowViewModel viewModel)
+                        {
+                            //добавить конектор
+                            //события двиганья конектора
+                            //this.PointerMoved += PointerMoveDrawLine;
+                            //this.PointerReleased += PointerPressedReleasedDrawLine;
+                        }
+                    }
+                    else
+                    {
+                        this.PointerMoved += PointerMoveDragShape;
+                        this.PointerReleased += PointerReleasedDragShape;
+                    }
                 }
             }
         }
@@ -33,7 +49,7 @@ namespace DiagramClass.Views
             {
                 if (control.DataContext is MyClass myClass)
                 {
-                    Point currentPointerPosition = pointerEventArgs
+                    Avalonia.Point currentPointerPosition = pointerEventArgs
                     .GetPosition(
                     this.GetVisualDescendants()
                     .OfType<Canvas>()
