@@ -18,7 +18,7 @@ namespace DiagramClass.ViewModels
                 new MyClass()
             };
         }
-        private ObservableCollection<object> CanvasList
+        public ObservableCollection<object> CanvasList
         {
             get => canvasList;
             set => this.RaiseAndSetIfChanged(ref canvasList, value);

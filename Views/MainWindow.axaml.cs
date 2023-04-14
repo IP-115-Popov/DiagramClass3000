@@ -5,6 +5,7 @@ using Avalonia.Input;
 using Avalonia.VisualTree;
 using DiagramClass.Models;
 using DiagramClass.ViewModels;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 
@@ -23,16 +24,25 @@ namespace DiagramClass.Views
             if (pointerPressedEventArgs.Source is Control control)
             {
                 if (control.DataContext is MyClass myClass)
-                {                 
-
+                {
+                    pointerPressedEvent = pointerPressedEventArgs
+                        .GetPosition(
+                        this.GetVisualDescendants()
+                        .OfType<Canvas>()
+                        .FirstOrDefault());
                     if (pointerPressedEventArgs.Source is Ellipse)
                     {
                         if (this.DataContext is MainWindowViewModel viewModel)
                         {
                             //добавить конектор
+                            viewModel.CanvasList.Add( new Connector()
+                            {
+                                StartPoint = pointerPressedEvent,
+                                EndPoint = pointerPressedEvent,
+                            });
                             //события двиганья конектора
-                            //this.PointerMoved += PointerMoveDrawLine;
-                            //this.PointerReleased += PointerPressedReleasedDrawLine;
+                            this.PointerMoved += PointerMoveDrawLine;
+                            this.PointerReleased += PointerPressedReleasedDrawLine;
                         }
                     }
                     else
@@ -63,5 +73,28 @@ namespace DiagramClass.Views
             this.PointerMoved -= PointerMoveDragShape;
             this.PointerReleased -= PointerReleasedDragShape;
         }
+        private void PointerMoveDrawLine(object? sender, PointerEventArgs pointerEventArgs)
+        {
+            if (this.DataContext is MainWindowViewModel viewModel)
+            {
+                Connector connector = viewModel.CanvasList[viewModel.CanvasList.Count - 1] as Connector;
+                Avalonia.Point currentPointerPosition = pointerEventArgs
+                    .GetPosition(
+                    this.GetVisualDescendants()
+                    .OfType<Canvas>()
+                    .FirstOrDefault());
+
+                connector.EndPoint = new Avalonia.Point(
+                        currentPointerPosition.X - 1,
+                        currentPointerPosition.Y - 1);
+            }
+        }
+
+        private void PointerPressedReleasedDrawLine(object? sender, PointerReleasedEventArgs pointerReleasedEventArgs)
+        {
+            this.PointerMoved -= PointerMoveDrawLine;
+            this.PointerReleased -= PointerPressedReleasedDrawLine;
+        }
     }
 }
+

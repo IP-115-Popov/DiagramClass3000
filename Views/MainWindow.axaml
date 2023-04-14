@@ -29,6 +29,13 @@
 			<DataTemplate DataType="{x:Type models:MyClass}">
 				<class:Class Margin="{Binding Margin, Converter={StaticResource stringToThicknessConverter}}"/>
 			</DataTemplate>
+			<DataTemplate DataType="{x:Type models:Connector}">
+				<Line StartPoint="{Binding StartPoint}"
+					  EndPoint="{Binding EndPoint}"
+					  StrokeThickness="3"
+					  Stroke="LawnGreen"
+					  />
+			</DataTemplate>
 			</ItemsControl.DataTemplates>
 	</ItemsControl>
 </Window>
