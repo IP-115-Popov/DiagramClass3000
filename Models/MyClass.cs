@@ -11,10 +11,14 @@ namespace DiagramClass.Models
     {
         private string attribute;
         private string margin;
+        private int width;
+        private int height;
         public MyClass()
         {
             attribute = "Null";
             Margin = "100,300";
+            Height = 128;
+            Width = 128;
         }
         public string Attribute 
         {
@@ -25,6 +29,16 @@ namespace DiagramClass.Models
         {
             get => margin;
             set => SetAndRaise(ref margin, value);
+        }
+        public int Width
+        {
+            get => width;
+            set => SetAndRaise(ref width, value);
+        }
+        public int Height
+        {
+            get => height;
+            set => SetAndRaise(ref height, value);
         }
     }
 }

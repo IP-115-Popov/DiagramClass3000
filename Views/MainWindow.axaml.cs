@@ -22,27 +22,11 @@ namespace DiagramClass.Views
             {
                 if (control.DataContext is MyClass myClass)
                 {
-                    pointerPressedEvent = pointerPressedEventArgs
-                        .GetPosition(
-                        this.GetVisualDescendants()
-                        .OfType<Canvas>()
-                        .FirstOrDefault());
                     this.PointerMoved += PointerMoveDragShape;
                     this.PointerReleased += PointerReleasedDragShape;
                 }
             }
-                //pointerPressedEvent = pointerPressedEventArgs.GetPosition(
-                //    this.GetVisualDescendants()
-                //    .OfType<Canvas>()
-                //    .FirstOrDefault());
-                //if ()
-                //if (pointerPressedEventArgs.Source is Rectangle myClass)
-                //{
-                //    pointerPositionInShape = pointerPressedEventArgs.GetPosition(myClass);
-                //    this.PointerMoved += PointerMoveDragShape;
-                //    this.PointerReleased += PointerReleasedDragShape;
-                //}
-            }
+        }
         private void PointerMoveDragShape(object? sender, PointerEventArgs pointerEventArgs)
         {
             if (pointerEventArgs.Source is Control control)
@@ -54,24 +38,9 @@ namespace DiagramClass.Views
                     this.GetVisualDescendants()
                     .OfType<Canvas>()
                     .FirstOrDefault());
-                    myClass.Margin = (currentPointerPosition.X).ToString() + "," + (currentPointerPosition.Y).ToString();
-                    //rectangle.StartPoint = new Point(
-                    //    currentPointerPosition.X - pointerPositionIntoShape.X,
-                    //    currentPointerPosition.Y - pointerPositionIntoShape.Y);
+                    myClass.Margin = (currentPointerPosition.X - myClass.Width / 2).ToString() + "," + (currentPointerPosition.Y - myClass.Height / 2).ToString();
                 }
             }
-            //if (pointerEventArgs.Source is Class myClassTab)
-            //{
-            //    Point currentPointPosition = pointerEventArgs
-            //        .GetPosition(
-            //        this.GetVisualDescendants()
-            //        .OfType<Canvas>().FirstOrDefault());
-            //    if (myClassTab.DataContext is MyClass myClass)
-            //    {
-            //        myClass.Margin = (currentPointPosition.X).ToString() + "," + (currentPointPosition.Y).ToString();
-            //        //myClass.TranslateTransformY = currentPointPosition.Y - shape.Height / 2;
-            //    }
-            //}
         }
         private void PointerReleasedDragShape(object? sender, PointerReleasedEventArgs pointerReleasedEventArgs)
         {
