@@ -39,7 +39,6 @@ namespace DiagramClass.Views
                             {
                                 StartPoint = pointerPressedEvent,
                                 EndPoint = pointerPressedEvent,
-                                myClassA = myClass,
                             };
                             myClass.MarginHandlerNotify += conector.ChangeStartPoint;
                             viewModel.CanvasList.Add(conector);
@@ -50,7 +49,6 @@ namespace DiagramClass.Views
                     }
                     else
                     {
-                        //this.PointerMoved += PointerMoveDrawConectedLine;
                         this.PointerMoved += PointerMoveDragShape;
                         this.PointerReleased += PointerReleasedDragShape;
                     }
@@ -115,7 +113,6 @@ namespace DiagramClass.Views
                 if (ellipse.DataContext is MyClass myClass)
                 {
                     Connector connector = viewModel.CanvasList[viewModel.CanvasList.Count - 1] as Connector;
-                    connector.myClassB = myClass;
                     myClass.MarginHandlerNotify += connector.ChangeEndPoint;
                     return;
                 }     
@@ -138,8 +135,6 @@ namespace DiagramClass.Views
                     .FirstOrDefault());
                
                 connector.EndPoint = new Avalonia.Point(connector.EndPoint.X + oldPoint.X, connector.EndPoint.Y + oldPoint.Y);
-                //currentPointerPosition.X - 1,
-                //currentPointerPosition.Y - 1);
                 oldPoint = new Avalonia.Point(currentPointerPosition.X - oldPoint.X, currentPointerPosition.Y - oldPoint.Y);
             }
         }

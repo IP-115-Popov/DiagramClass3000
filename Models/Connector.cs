@@ -12,8 +12,6 @@ namespace DiagramClass.Models
     {
         private Point startPoint;
         private Point endPoint;
-        public MyClass myClassA;
-        public MyClass myClassB;
         public Point StartPoint
         {
             get => startPoint;
