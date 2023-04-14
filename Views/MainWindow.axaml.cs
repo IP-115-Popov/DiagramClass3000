@@ -47,6 +47,7 @@ namespace DiagramClass.Views
                     }
                     else
                     {
+                        this.PointerMoved += PointerMoveDrawConectedLine;
                         this.PointerMoved += PointerMoveDragShape;
                         this.PointerReleased += PointerReleasedDragShape;
                     }
@@ -70,6 +71,7 @@ namespace DiagramClass.Views
         }
         private void PointerReleasedDragShape(object? sender, PointerReleasedEventArgs pointerReleasedEventArgs)
         {
+            this.PointerMoved -= PointerMoveDrawConectedLine;
             this.PointerMoved -= PointerMoveDragShape;
             this.PointerReleased -= PointerReleasedDragShape;
         }
@@ -94,6 +96,47 @@ namespace DiagramClass.Views
         {
             this.PointerMoved -= PointerMoveDrawLine;
             this.PointerReleased -= PointerPressedReleasedDrawLine;
+
+
+            var canvas = this.GetVisualDescendants()
+                        .OfType<Canvas>()
+                        .FirstOrDefault();
+
+            var element = canvas.InputHitTest(pointerReleasedEventArgs.GetPosition(canvas));
+
+            MainWindowViewModel viewModel = this.DataContext as MainWindowViewModel;
+
+            if (element is Ellipse ellipse)
+            {
+                if (ellipse.DataContext is MyClass myClass)
+                {
+                    //Connector connector = viewModel.CanvasList[viewModel.CanvasList.Count - 1] as Connector;
+                    //connector.SecondRectangle = rectangle;
+                    return;
+                }     
+            }
+            else
+            {
+                viewModel.CanvasList.RemoveAt(viewModel.CanvasList.Count - 1);
+            }
+        }
+        Avalonia.Point oldPoint = new Avalonia.Point(0,0);
+        private void PointerMoveDrawConectedLine(object? sender, PointerEventArgs pointerEventArgs)
+        {
+            if (this.DataContext is MainWindowViewModel viewModel)
+            {
+                Connector connector = viewModel.CanvasList[viewModel.CanvasList.Count - 1] as Connector;
+                Avalonia.Point currentPointerPosition = pointerEventArgs
+                    .GetPosition(
+                    this.GetVisualDescendants()
+                    .OfType<Canvas>()
+                    .FirstOrDefault());
+               
+                connector.EndPoint = new Avalonia.Point(connector.EndPoint.X + oldPoint.X, connector.EndPoint.Y + oldPoint.Y);
+                //currentPointerPosition.X - 1,
+                //currentPointerPosition.Y - 1);
+                oldPoint = new Avalonia.Point(currentPointerPosition.X - oldPoint.X, currentPointerPosition.Y - oldPoint.Y);
+            }
         }
     }
 }

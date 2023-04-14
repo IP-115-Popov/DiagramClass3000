@@ -15,7 +15,8 @@ namespace DiagramClass.ViewModels
         {
             canvasList = new ObservableCollection<object>
             {
-                new MyClass()
+                new MyClass(),
+                 new MyClass() { Margin = "400,300" }
             };
         }
         public ObservableCollection<object> CanvasList
