@@ -25,13 +25,13 @@ namespace DiagramClass.Models
             set => SetAndRaise(ref endPoint, value);
         }
         private Avalonia.Point Dpoint = new Avalonia.Point(0, 0);
-        public void ChangeStartPoint(Point point)
+        public void ChangeStartPoint(Point dPoint)
         {
-            this.StartPoint = point;
+            this.StartPoint += dPoint;
         }
-        public void ChangeEndPoint(Point point)
+        public void ChangeEndPoint(Point dPoint)
         {
-            this.EndPoint = point;
+            this.EndPoint += dPoint;
         }
     }
 }

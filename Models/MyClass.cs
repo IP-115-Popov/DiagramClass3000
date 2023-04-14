@@ -12,6 +12,7 @@ namespace DiagramClass.Models
     public class MyClass : AbstractNotifyPropertyChanged
     {
         private string attribute;
+        private string oldMargin;
         private string margin;
         private int width;
         private int height;
@@ -32,10 +33,13 @@ namespace DiagramClass.Models
             get => margin;
             set
             {
-                //Оповищаяем об зизменениях
+                //запоминаю прошлое положение
+                oldMargin = margin;
+                //изменяем положение на новое
                 SetAndRaise(ref margin, value);
                 //тригерим ивент оповешаюший конекторы об изменениях
-                MarginHandlerNotify?.Invoke(Avalonia.Point.Parse(margin));
+                //вычесляем дельту
+                MarginHandlerNotify?.Invoke(new Avalonia.Point(Avalonia.Point.Parse(margin).X - Avalonia.Point.Parse(oldMargin).X, Avalonia.Point.Parse(margin).Y - Avalonia.Point.Parse(oldMargin).Y));
             }
         }
         public int Width
