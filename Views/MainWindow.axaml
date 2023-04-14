@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:class="clr-namespace:DiagramClass.Views"
+		xmlns:models="clr-namespace:DiagramClass.Models"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="DiagramClass.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
@@ -12,7 +13,23 @@
     <Design.DataContext>
         <vm:MainWindowViewModel/>
     </Design.DataContext>
-	<Canvas  Height="700" Width="700" Background="Aqua">
+	<ItemsControl Items="{Binding CanvasList}">
+		<ItemsControl.ItemsPanel>
+			<ItemsPanelTemplate>
+				<Canvas  Height="700" Width="700" Background="Aqua"/>
+			</ItemsPanelTemplate>
+		</ItemsControl.ItemsPanel>
+		<ItemsControl.DataTemplates>
+			<DataTemplate DataType="{x:Type models:MyClass}">
+				<class:Class Margin="100,300"/>
+			</DataTemplate>
+			</ItemsControl.DataTemplates>
+	</ItemsControl>
+	
+	
+	
+	
+	<!--<Canvas  Height="700" Width="700" Background="Aqua">
 		<class:Class Margin="100,300"/>
-	</Canvas>
+	</Canvas>-->
 </Window>
