@@ -13,7 +13,13 @@
     <Design.DataContext>
         <vm:MainWindowViewModel/>
     </Design.DataContext>
-	<ItemsControl Items="{Binding CanvasList}">
+	<Window.Resources>
+		<models:StringToThicknessConverter x:Key="stringToThicknessConverter"/>
+	</Window.Resources>
+	<ItemsControl Items="{Binding CanvasList}"
+				  HorizontalAlignment="Stretch"
+				  VerticalAlignment="Stretch"
+				  PointerPressed="PointerPressedOnCanvas">
 		<ItemsControl.ItemsPanel>
 			<ItemsPanelTemplate>
 				<Canvas  Height="700" Width="700" Background="Aqua"/>
@@ -21,15 +27,8 @@
 		</ItemsControl.ItemsPanel>
 		<ItemsControl.DataTemplates>
 			<DataTemplate DataType="{x:Type models:MyClass}">
-				<class:Class Margin="100,300"/>
+				<class:Class Margin="{Binding Margin, Converter={StaticResource stringToThicknessConverter}}"/>
 			</DataTemplate>
 			</ItemsControl.DataTemplates>
 	</ItemsControl>
-	
-	
-	
-	
-	<!--<Canvas  Height="700" Width="700" Background="Aqua">
-		<class:Class Margin="100,300"/>
-	</Canvas>-->
 </Window>
