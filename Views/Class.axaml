@@ -30,7 +30,7 @@
 						  </DataTemplate>
 					  </ListBox.ItemTemplate>
 				  </ListBox>
-				  <ListBox Grid.Row="3" Grid.Column="0" Name="Propertis">
+				  <ListBox Grid.Row="3" Grid.Column="0" Items="{Binding PropertisList}" Name="Propertis">
 					  <ListBox.ItemTemplate>
 						  <DataTemplate>
 							  <Grid ColumnDefinitions="*,*">
