@@ -15,9 +15,32 @@
 			  <Ellipse Width="10" Height="10" Margin="59,2" Fill="DarkGreen" StrokeThickness="3"/>
 			  <Ellipse Width="10" Height="10" Margin="59,118" Fill="DarkGreen" StrokeThickness="3"/>
 			  <Ellipse Width="10" Height="10" Margin="118,59" Fill="DarkGreen" StrokeThickness="3"/>
-			  <Grid RowDefinitions="*,*" Margin="10,10,10,10">
-				  <TextBox Grid.Row="0" Text="public"/>
-				  <TextBox Grid.Row="1"  Text="Class"/>
+			  <Grid RowDefinitions="*,*,*,*" ColumnDefinitions="*,*" Margin="10,10,10,10">
+				  <TextBlock Grid.Row="0" Grid.Column="0" Text="Class"/>
+				  <TextBlock Grid.Row="1" Grid.Column="0" Text="public"/> 
+				  <TextBlock Grid.Row="1" Grid.Column="1" Text="Name"/>
+				  <ListBox Grid.Row="2" Grid.Column="0" Items="{Binding MetodsList}" Name="Metods">
+					  <ListBox.ItemTemplate>
+						  <DataTemplate>
+							  <Grid ColumnDefinitions="*,*,*">
+								  <TextBlock Grid.Column="0" Text="{Binding Аccess}"/>
+								  <TextBlock Grid.Column="1" Text="{Binding Return}"/>
+								  <TextBlock Grid.Column="2" Text="{Binding Name}"/>
+							  </Grid>
+						  </DataTemplate>
+					  </ListBox.ItemTemplate>
+				  </ListBox>
+				  <ListBox Grid.Row="3" Grid.Column="0" Name="Propertis">
+					  <ListBox.ItemTemplate>
+						  <DataTemplate>
+							  <Grid ColumnDefinitions="*,*">
+								  <TextBlock Grid.Column="0" Text="{Binding Аccess}"/>
+								  <TextBlock Grid.Column="1" Text="{Binding Return}"/>
+								  <TextBlock Grid.Column="2" Text="{Binding Name}"/>
+							  </Grid>
+						  </DataTemplate>
+					  </ListBox.ItemTemplate>
+				  </ListBox>
 			  </Grid>
 		  </Canvas>
 		 
