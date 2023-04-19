@@ -2,6 +2,7 @@
 using DynamicData.Binding;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,22 +14,30 @@ namespace DiagramClass.Models
     {
         private string attribute;
         private string oldMargin;
-        private string margin;
+        private string? margin;
         private int width;
         private int height;
+        private ObservableCollection<Metod>? methodList;
+        public ObservableCollection<Metod>? MethodList
+        {
+            get => methodList;
+            set => SetAndRaise(ref methodList, value);
+        }
         public MyClass()
         {
             attribute = "Null";
             Margin = "100,300";
             Height = 128;
             Width = 128;
+            MethodList = new ObservableCollection<Metod>();
+            MethodList.Add(new Metod() { Name = "fasf", Return = "string" , Аccess="public"});
         }
         public string Attribute 
         {
             get => attribute;
             set => SetAndRaise(ref attribute, value);
         }
-        public string Margin
+        public string? Margin
         {
             get => margin;
             set

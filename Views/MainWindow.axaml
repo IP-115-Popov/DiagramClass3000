@@ -27,7 +27,7 @@
 		</ItemsControl.ItemsPanel>
 		<ItemsControl.DataTemplates>
 			<DataTemplate DataType="{x:Type models:MyClass}">
-				<class:Class Margin="{Binding Margin, Converter={StaticResource stringToThicknessConverter}}"/>
+				<class:Class CustomList="{Binding MethodList}" Margin="{Binding Margin, Converter={StaticResource stringToThicknessConverter}}"/>
 			</DataTemplate>
 			<DataTemplate DataType="{x:Type models:Connector}">
 				<Line StartPoint="{Binding StartPoint}"

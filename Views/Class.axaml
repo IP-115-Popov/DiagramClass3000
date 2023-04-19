@@ -2,7 +2,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="using:DiagramClass.Views">
   <Design.PreviewWith>
-    <controls:Class />
+    <controls:Class/>
   </Design.PreviewWith>
 
   <Style Selector="controls|Class">
@@ -19,7 +19,7 @@
 				  <TextBlock Grid.Row="0" Grid.Column="0" Text="Class"/>
 				  <TextBlock Grid.Row="1" Grid.Column="0" Text="public"/> 
 				  <TextBlock Grid.Row="1" Grid.Column="1" Text="Name"/>
-				  <ListBox Grid.Row="2" Grid.Column="0" Items="{Binding MetodsList}" Name="Metods">
+				  <ListBox Grid.Row="2" Grid.Column="0" Items="{TemplateBinding CustomList}" Name="Metods">
 					  <ListBox.ItemTemplate>
 						  <DataTemplate>
 							  <Grid ColumnDefinitions="*,*,*">
