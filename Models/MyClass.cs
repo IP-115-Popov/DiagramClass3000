@@ -1,4 +1,5 @@
 ﻿using Avalonia;
+using DynamicData;
 using DynamicData.Binding;
 using System;
 using System.Collections.Generic;
@@ -18,10 +19,16 @@ namespace DiagramClass.Models
         private int width;
         private int height;
         private ObservableCollection<Metod>? methodList;
+        private ObservableCollection<Properti>? propertiList;
         public ObservableCollection<Metod>? MethodList
         {
             get => methodList;
             set => SetAndRaise(ref methodList, value);
+        }
+        public ObservableCollection<Properti>? PropertiList
+        {
+            get => propertiList;
+            set => SetAndRaise(ref propertiList, value);
         }
         public MyClass()
         {
@@ -30,7 +37,9 @@ namespace DiagramClass.Models
             Height = 128;
             Width = 128;
             MethodList = new ObservableCollection<Metod>();
+            PropertiList = new ObservableCollection<Properti>();
             MethodList.Add(new Metod() { Name = "fasf", Return = "string" , Аccess="public"});
+            PropertiList.Add(new Properti() { Name = "Properti", Return = "string", Аccess = "public" });
         }
         public string Attribute 
         {

@@ -19,7 +19,7 @@
 				  <TextBlock Grid.Row="0" Grid.Column="0" Text="Class"/>
 				  <TextBlock Grid.Row="1" Grid.Column="0" Text="public"/> 
 				  <TextBlock Grid.Row="1" Grid.Column="1" Text="Name"/>
-				  <ListBox Grid.Row="2" Grid.Column="0" Items="{TemplateBinding CustomList}" Name="Metods">
+				  <ListBox Grid.Row="2" Grid.Column="0" Items="{TemplateBinding CustomMethList}" Name="Metods">
 					  <ListBox.ItemTemplate>
 						  <DataTemplate>
 							  <Grid ColumnDefinitions="*,*,*">
@@ -30,7 +30,7 @@
 						  </DataTemplate>
 					  </ListBox.ItemTemplate>
 				  </ListBox>
-				  <ListBox Grid.Row="3" Grid.Column="0" Items="{Binding PropertisList}" Name="Propertis">
+				  <ListBox Grid.Row="3" Grid.Column="0" Items="{TemplateBinding CustomProList}" Name="Propertis">
 					  <ListBox.ItemTemplate>
 						  <DataTemplate>
 							  <Grid ColumnDefinitions="*,*">
