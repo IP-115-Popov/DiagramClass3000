@@ -16,6 +16,8 @@ namespace DiagramClass.ViewModels
         private bool aggregation;
         private bool composition;
         private bool association;
+        private bool drawClass;
+        private bool drawInterface;
         private ObservableCollection<object> canvasList;
         public MainWindowViewModel()
         {
@@ -60,6 +62,16 @@ namespace DiagramClass.ViewModels
         {
             get => association;
             set => this.RaiseAndSetIfChanged(ref association, value);
+        }
+        public bool DrawClass
+        {
+            get => drawClass;
+            set => this.RaiseAndSetIfChanged(ref drawClass, value);
+        }
+        public bool DrawInterface
+        {
+            get => drawInterface;
+            set => this.RaiseAndSetIfChanged(ref drawInterface, value);
         }
     }
 }

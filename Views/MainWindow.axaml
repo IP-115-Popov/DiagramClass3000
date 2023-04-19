@@ -17,88 +17,112 @@
 	<Window.Resources>
 		<models:StringToThicknessConverter x:Key="stringToThicknessConverter"/>
 	</Window.Resources>
-	<Grid ColumnDefinitions="0.2*,*">
-		<Grid RowDefinitions="0.2*,0.2*,*" Grid.Column="0">
-			<Button Grid.Row="0"  Content="Save"/>
-			<Button Grid.Row="1" Content="Load"/>
-			<StackPanel Grid.Row="2">
-				<RadioButton Content="Inheritance"
-							 IsChecked="{Binding Inheritance}"
-							 GroupName="Connector"/>
-				<RadioButton Content="Implementation"
-							 IsChecked="{Binding Implementation}"
-							 GroupName="Connector"/>
-				<RadioButton Content="Addiction"
-							 IsChecked="{Binding Addiction}"
-							 GroupName="Connector"/>
-				<RadioButton Content="Aggregation"
-							 IsChecked="{Binding Aggregation}"
-							 GroupName="Connector"/>
-				<RadioButton Content="Composition"
-							IsChecked="{Binding Composition}"
-							GroupName="Connector"/>
-				<RadioButton Content="Association"
-							IsChecked="{Binding Association}"
-							GroupName="Connector"/>
-			</StackPanel>
+	<Grid RowDefinitions="0.1*,*">
+		<Grid Grid.Row="0" ColumnDefinitions="0.3*,0.3*,*">
+			<Menu Grid.Column="0">
+				<MenuItem Header="Экспортировать" Name="menuExport">
+					<MenuItem Header="Экспортировать из .xml"/>
+					<MenuItem Header="Экспортировать из .json"/>
+					<MenuItem Header="Экспортировать из .yaml"/>
+				</MenuItem>
+			</Menu>
+			<Menu Grid.Column="1">
+				<MenuItem Header="Импортировать" Name="menuImport">
+					<MenuItem Header="Экспортировать в .png"/>
+					<MenuItem Header="Импортировать в .xml"/>
+					<MenuItem Header="Импортировать в .json"/>
+					<MenuItem Header="Импортировать в .yaml"/>
+				</MenuItem>
+			</Menu>
 		</Grid>
-		<ItemsControl Grid.Column="1" Items="{Binding CanvasList}"
-					  HorizontalAlignment="Stretch"
-					  VerticalAlignment="Stretch"
-					  PointerPressed="PointerPressedOnCanvas">
-			<ItemsControl.ItemsPanel>
-				<ItemsPanelTemplate>
-					<Canvas  Height="700" Width="700" Background="Aqua"/>
-				</ItemsPanelTemplate>
-			</ItemsControl.ItemsPanel>
-			<ItemsControl.DataTemplates>
-				<DataTemplate DataType="{x:Type models:MyClass}">
-					<class:Class CustomMethList="{Binding MethodList}" CustomProList ="{Binding PropertiList}" Margin="{Binding Margin, Converter={StaticResource stringToThicknessConverter}}"/>
-				</DataTemplate>
+		<Grid Grid.Row="1" ColumnDefinitions="0.2*,*">
+			<StackPanel Grid.Column="0">
+					<TextBlock Text="Connector"/>
+					<RadioButton Content="Inheritance"
+									IsChecked="{Binding Inheritance}"
+									GroupName="Connector"/>
+					<RadioButton Content="Implementation"
+									IsChecked="{Binding Implementation}"
+									GroupName="Connector"/>
+					<RadioButton Content="Addiction"
+									IsChecked="{Binding Addiction}"
+									GroupName="Connector"/>
+					<RadioButton Content="Aggregation"
+									IsChecked="{Binding Aggregation}"
+									GroupName="Connector"/>
+					<RadioButton Content="Composition"
+								IsChecked="{Binding Composition}"
+								GroupName="Connector"/>
+					<RadioButton Content="Association"
+								IsChecked="{Binding Association}"
+								GroupName="Connector"/>
+					<TextBlock Text="DrawObject"/>
+					<RadioButton Content="Class"
+								IsChecked="{Binding DrawClass}"
+								GroupName="DrawObject"/>
+					<RadioButton Content="Interfase"
+								IsChecked="{Binding DrawInterface}"
+								GroupName="DrawObject"/>
+				
+			</StackPanel>
+			<ItemsControl Grid.Column="1" Items="{Binding CanvasList}"
+						  HorizontalAlignment="Stretch"
+						  VerticalAlignment="Stretch"
+						  PointerPressed="PointerPressedOnCanvas">
+				<ItemsControl.ItemsPanel>
+					<ItemsPanelTemplate>
+						<Canvas  Height="700" Width="700" Background="Aqua"/>
+					</ItemsPanelTemplate>
+				</ItemsControl.ItemsPanel>
+				<ItemsControl.DataTemplates>
+					<DataTemplate DataType="{x:Type models:MyClass}">
+						<class:Class CustomMethList="{Binding MethodList}" CustomProList ="{Binding PropertiList}" Margin="{Binding Margin, Converter={StaticResource stringToThicknessConverter}}"/>
+					</DataTemplate>
 			
-				<DataTemplate DataType="{x:Type connecters:InheritanceConnector}">
-					<Line StartPoint="{Binding StartPoint}"
-						  EndPoint="{Binding EndPoint}"
-						  StrokeThickness="3"
-						  Stroke="Red"
-						  />
-				</DataTemplate>
-				<DataTemplate DataType="{x:Type connecters:ImplementationConnector}">
-					<Line StartPoint="{Binding StartPoint}"
-						  EndPoint="{Binding EndPoint}"
-						  StrokeThickness="3"
-						  Stroke="Yellow"
-						  />
-				</DataTemplate>
-				<DataTemplate DataType="{x:Type connecters:AddictionConnector}">
-					<Line StartPoint="{Binding StartPoint}"
-						  EndPoint="{Binding EndPoint}"
-						  StrokeThickness="3"
-						  Stroke="Black"
-						  />
-				</DataTemplate>
-				<DataTemplate DataType="{x:Type connecters:AggregationConnector}">
-					<Line StartPoint="{Binding StartPoint}"
-						  EndPoint="{Binding EndPoint}"
-						  StrokeThickness="3"
-						  Stroke="Bisque"
-						  />
-				</DataTemplate>
-				<DataTemplate DataType="{x:Type connecters:CompositionConnector}">
-					<Line StartPoint="{Binding StartPoint}"
-						  EndPoint="{Binding EndPoint}"
-						  StrokeThickness="3"
-						  Stroke="Pink"
-						  />
-				</DataTemplate>
-				<DataTemplate DataType="{x:Type connecters:AssociationConnector}">
-					<Line StartPoint="{Binding StartPoint}"
-						  EndPoint="{Binding EndPoint}"
-						  StrokeThickness="3"
-						  Stroke="Gray"
-						  />
-				</DataTemplate>
-				</ItemsControl.DataTemplates>
-		</ItemsControl>
+					<DataTemplate DataType="{x:Type connecters:InheritanceConnector}">
+						<Line StartPoint="{Binding StartPoint}"
+							  EndPoint="{Binding EndPoint}"
+							  StrokeThickness="3"
+							  Stroke="Red"
+							  />
+					</DataTemplate>
+					<DataTemplate DataType="{x:Type connecters:ImplementationConnector}">
+						<Line StartPoint="{Binding StartPoint}"
+							  EndPoint="{Binding EndPoint}"
+							  StrokeThickness="3"
+							  Stroke="Yellow"
+							  />
+					</DataTemplate>
+					<DataTemplate DataType="{x:Type connecters:AddictionConnector}">
+						<Line StartPoint="{Binding StartPoint}"
+							  EndPoint="{Binding EndPoint}"
+							  StrokeThickness="3"
+							  Stroke="Black"
+							  />
+					</DataTemplate>
+					<DataTemplate DataType="{x:Type connecters:AggregationConnector}">
+						<Line StartPoint="{Binding StartPoint}"
+							  EndPoint="{Binding EndPoint}"
+							  StrokeThickness="3"
+							  Stroke="Bisque"
+							  />
+					</DataTemplate>
+					<DataTemplate DataType="{x:Type connecters:CompositionConnector}">
+						<Line StartPoint="{Binding StartPoint}"
+							  EndPoint="{Binding EndPoint}"
+							  StrokeThickness="3"
+							  Stroke="Pink"
+							  />
+					</DataTemplate>
+					<DataTemplate DataType="{x:Type connecters:AssociationConnector}">
+						<Line StartPoint="{Binding StartPoint}"
+							  EndPoint="{Binding EndPoint}"
+							  StrokeThickness="3"
+							  Stroke="Gray"
+							  />
+					</DataTemplate>
+					</ItemsControl.DataTemplates>
+			</ItemsControl>
+		</Grid>
 	</Grid>
 </Window>
