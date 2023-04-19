@@ -10,24 +10,24 @@ namespace DiagramClass.Models
 {
     public class Connector : AbstractNotifyPropertyChanged
     {
-        protected Point startPoint;
-        protected Point endPoint;
-        public Point StartPoint
+        protected string startPoint;
+        protected string endPoint;
+        public string StartPoint
         {
             get => startPoint;
             set => SetAndRaise(ref startPoint, value);
         }
-        public Point EndPoint
+        public string EndPoint
         {
             get => endPoint;
             set => SetAndRaise(ref endPoint, value);
         }
         protected Avalonia.Point Dpoint = new Avalonia.Point(0, 0);
-        public void ChangeStartPoint(Point dPoint)
+        public void ChangeStartPoint(string dPoint)
         {
             this.StartPoint += dPoint;
         }
-        public void ChangeEndPoint(Point dPoint)
+        public void ChangeEndPoint(string dPoint)
         {
             this.EndPoint += dPoint;
         }
