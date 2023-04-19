@@ -2,6 +2,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Shapes;
 using Avalonia.Input;
+using Avalonia.Interactivity;
 using Avalonia.VisualTree;
 using DiagramClass.Models;
 using DiagramClass.Models.Connectors;
@@ -186,6 +187,23 @@ namespace DiagramClass.Views
                 oldPoint = new Avalonia.Point(currentPointerPosition.X - oldPoint.X, currentPointerPosition.Y - oldPoint.Y);
             }
         }
+        //добавление элементов
+
+        private async void AddClassOnCanvasEvent(object sender, RoutedEventArgs eventArgs)
+        {
+            if (this.DataContext is MainWindowViewModel viewModel)
+            {
+                viewModel.AddClassOnCanvas();
+            }
+        }
+        private async void AddInterfaceOnCanvasEvent(object sender, RoutedEventArgs eventArgs)
+        {
+                if (this.DataContext is MainWindowViewModel viewModel)
+                {
+                    viewModel.AddInterfaceOnCanvas();
+                }
+        }
+           // Сохранение выгрузка элементов
     }
 }
 

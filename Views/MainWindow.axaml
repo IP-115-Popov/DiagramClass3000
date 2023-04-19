@@ -18,7 +18,7 @@
 		<models:StringToThicknessConverter x:Key="stringToThicknessConverter"/>
 	</Window.Resources>
 	<Grid RowDefinitions="0.1*,*">
-		<Grid Grid.Row="0" ColumnDefinitions="0.3*,0.3*,*">
+		<Grid Grid.Row="0" ColumnDefinitions="0.3*,0.3*,0.3*,*">
 			<Menu Grid.Column="0">
 				<MenuItem Header="Экспортировать" Name="menuExport">
 					<MenuItem Header="Экспортировать из .xml"/>
@@ -32,6 +32,12 @@
 					<MenuItem Header="Импортировать в .xml"/>
 					<MenuItem Header="Импортировать в .json"/>
 					<MenuItem Header="Импортировать в .yaml"/>
+				</MenuItem>
+			</Menu>
+			<Menu Grid.Column="2">
+				<MenuItem Header="Draw Object" Name="menuDrawObject">
+					<MenuItem Header="Class" Click="AddClassOnCanvasEvent"/>
+					<MenuItem Header="Interfase" Click="AddInterfaceOnCanvasEvent"/>
 				</MenuItem>
 			</Menu>
 		</Grid>
@@ -55,15 +61,7 @@
 								GroupName="Connector"/>
 					<RadioButton Content="Association"
 								IsChecked="{Binding Association}"
-								GroupName="Connector"/>
-					<TextBlock Text="DrawObject"/>
-					<RadioButton Content="Class"
-								IsChecked="{Binding DrawClass}"
-								GroupName="DrawObject"/>
-					<RadioButton Content="Interfase"
-								IsChecked="{Binding DrawInterface}"
-								GroupName="DrawObject"/>
-				
+								GroupName="Connector"/>				
 			</StackPanel>
 			<ItemsControl Grid.Column="1" Items="{Binding CanvasList}"
 						  HorizontalAlignment="Stretch"
@@ -76,7 +74,7 @@
 				</ItemsControl.ItemsPanel>
 				<ItemsControl.DataTemplates>
 					<DataTemplate DataType="{x:Type models:MyClass}">
-						<class:Class CustomMethList="{Binding MethodList}" CustomProList ="{Binding PropertiList}" Margin="{Binding Margin, Converter={StaticResource stringToThicknessConverter}}"/>
+						<class:Class MyTupeText="{Binding MyType}" MyExtension="{Binding Attribute}" TupeName="{Binding Name}" CustomMethList="{Binding MethodList}" CustomProList ="{Binding PropertiList}" Margin="{Binding Margin, Converter={StaticResource stringToThicknessConverter}}"/>
 					</DataTemplate>
 			
 					<DataTemplate DataType="{x:Type connecters:InheritanceConnector}">

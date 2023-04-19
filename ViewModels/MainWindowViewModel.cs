@@ -1,10 +1,14 @@
 using DiagramClass.Models;
+using DynamicData;
 using ReactiveUI;
 using SkiaSharp;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Drawing.Printing;
+using System.Reactive;
 using System.Text;
+using System.Xml.Linq;
 
 namespace DiagramClass.ViewModels
 {
@@ -23,8 +27,12 @@ namespace DiagramClass.ViewModels
         {
             canvasList = new ObservableCollection<object>
             {
-                new MyClass(),
-                 new MyClass() { Margin = "400,300" }
+                new MyClass()
+                {
+                    Attribute ="1",
+                    Name = "2",
+                    MyType ="3",
+                }
             };
         }
         public ObservableCollection<object> CanvasList
@@ -72,6 +80,22 @@ namespace DiagramClass.ViewModels
         {
             get => drawInterface;
             set => this.RaiseAndSetIfChanged(ref drawInterface, value);
+        }
+        public void AddClassOnCanvas()
+        {
+            canvasList.Add(new MyClass()
+            {
+                MyType = "Class",
+                Margin = "0,0"
+            });
+        }
+        public void AddInterfaceOnCanvas()
+        {
+            canvasList.Add(new MyClass()
+            {
+                MyType = "Interface",
+                Margin = "0,0"
+            });
         }
     }
 }

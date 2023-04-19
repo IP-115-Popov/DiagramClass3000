@@ -2,7 +2,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="using:DiagramClass.Views">
   <Design.PreviewWith>
-    <controls:Class/>
+    <controls:Class MyTupeText="Class" TupeName="LOL" MyExtension="public"/>
   </Design.PreviewWith>
 
   <Style Selector="controls|Class">
@@ -15,10 +15,13 @@
 			  <Ellipse Width="10" Height="10" Margin="59,2" Fill="DarkGreen" StrokeThickness="3"/>
 			  <Ellipse Width="10" Height="10" Margin="59,118" Fill="DarkGreen" StrokeThickness="3"/>
 			  <Ellipse Width="10" Height="10" Margin="118,59" Fill="DarkGreen" StrokeThickness="3"/>
-			  <Grid RowDefinitions="*,*,*,*" ColumnDefinitions="*,*" Margin="10,10,10,10">
-				  <TextBlock Grid.Row="0" Grid.Column="0" Text="Class"/>
-				  <TextBlock Grid.Row="1" Grid.Column="0" Text="public"/> 
-				  <TextBlock Grid.Row="1" Grid.Column="1" Text="Name"/>
+			  <Grid RowDefinitions="*,*,*,*" ColumnDefinitions="*,*,*" Margin="10,10,10,10">
+				  
+				  <TextBlock Grid.Row="0" Grid.Column="0" Text="{TemplateBinding MyTupeText}"/>
+				  <TextBlock Grid.Row="0" Grid.Column="1" Text="{TemplateBinding MyExtension}"/> 
+				  <TextBlock Grid.Row="0" Grid.Column="2" Text="{TemplateBinding TupeName}"/>
+				  
+				  
 				  <ListBox Grid.Row="2" Grid.Column="0" Items="{TemplateBinding CustomMethList}" Name="Metods">
 					  <ListBox.ItemTemplate>
 						  <DataTemplate>

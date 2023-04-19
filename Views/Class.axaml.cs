@@ -23,5 +23,28 @@ namespace DiagramClass.Views
             get => GetValue(CustomProListProperty);
             set => SetValue(CustomProListProperty, value);
         }
+
+
+        public static readonly StyledProperty<string?> MyTupeTextProperty =
+           AvaloniaProperty.Register<Class, string?>("MyTupeText");
+        public string? MyTupeText
+        {
+            get => GetValue(MyTupeTextProperty);
+            set => SetValue(MyTupeTextProperty, value);
+        }
+        public static readonly StyledProperty<string> MyExtensionProperty =
+           AvaloniaProperty.Register<Class, string>("MyExtension");
+        public string MyExtension
+        {
+            get => GetValue(MyExtensionProperty);
+            set => SetValue(MyExtensionProperty, value);
+        }
+        public static readonly StyledProperty<string> TupeNameProperty =
+           AvaloniaProperty.Register<Class, string>("TupeName");
+        public string TupeName
+        {
+            get => GetValue(TupeNameProperty);
+            set => SetValue(TupeNameProperty, value);
+        }
     }
 }

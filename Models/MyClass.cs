@@ -13,6 +13,8 @@ namespace DiagramClass.Models
 {
     public class MyClass : AbstractNotifyPropertyChanged
     {
+        private string? myType;
+        private string name;
         private string attribute;
         private string oldMargin;
         private string? margin;
@@ -46,6 +48,11 @@ namespace DiagramClass.Models
             get => attribute;
             set => SetAndRaise(ref attribute, value);
         }
+        public string Name
+        {
+            get => name;
+            set => SetAndRaise(ref name, value);
+        }
         public string? Margin
         {
             get => margin;
@@ -69,6 +76,11 @@ namespace DiagramClass.Models
         {
             get => height;
             set => SetAndRaise(ref height, value);
+        }
+        public string? MyType
+        {
+            get => myType;
+            set => SetAndRaise(ref myType, value);
         }
         //public void MarginHandlerNotifyImvoker(Avalonia.Point point)
         //{
