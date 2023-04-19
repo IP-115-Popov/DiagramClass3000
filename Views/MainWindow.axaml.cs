@@ -4,6 +4,7 @@ using Avalonia.Controls.Shapes;
 using Avalonia.Input;
 using Avalonia.VisualTree;
 using DiagramClass.Models;
+using DiagramClass.Models.Connectors;
 using DiagramClass.ViewModels;
 using System.Diagnostics;
 using System.Drawing;
@@ -34,17 +35,64 @@ namespace DiagramClass.Views
                     {
                         if (this.DataContext is MainWindowViewModel viewModel)
                         {
-                            //добавить конектор                           
-                            Connector conector = new Connector()
+                            //добавить конектор
+                            Connector? conector = null;
+                            if (viewModel.Inheritance == true)
                             {
-                                StartPoint = pointerPressedEvent,
-                                EndPoint = pointerPressedEvent,
-                            };
-                            myClass.MarginHandlerNotify += conector.ChangeStartPoint;
-                            viewModel.CanvasList.Add(conector);
-                            //события двиганья конектора
-                            this.PointerMoved += PointerMoveDrawLine;
-                            this.PointerReleased += PointerPressedReleasedDrawLine;
+                                conector = new InheritanceConnector()
+                                {
+                                    StartPoint = pointerPressedEvent,
+                                    EndPoint = pointerPressedEvent,
+                                };
+                            } 
+                            else if (viewModel.Implementation == true) 
+                            {
+                                conector = new ImplementationConnector()
+                                {
+                                    StartPoint = pointerPressedEvent,
+                                    EndPoint = pointerPressedEvent,
+                                };
+                            }
+                            else if (viewModel.Addiction == true)
+                            {
+                                conector = new AddictionConnector()
+                                {
+                                    StartPoint = pointerPressedEvent,
+                                    EndPoint = pointerPressedEvent,
+                                };
+                            }
+                            else if (viewModel.Aggregation == true)
+                            {
+                                conector = new AggregationConnector()
+                                {
+                                    StartPoint = pointerPressedEvent,
+                                    EndPoint = pointerPressedEvent,
+                                };
+                            }
+                            else if (viewModel.Composition == true)
+                            {
+                                conector = new CompositionConnector()
+                                {
+                                    StartPoint = pointerPressedEvent,
+                                    EndPoint = pointerPressedEvent,
+                                };
+                            }
+                            else if (viewModel.Association == true)
+                            {
+                                conector = new AssociationConnector()
+                                {
+                                    StartPoint = pointerPressedEvent,
+                                    EndPoint = pointerPressedEvent,
+                                };
+                            }
+                            if (conector != null)
+                            {
+                                myClass.MarginHandlerNotify += conector.ChangeStartPoint;
+                                viewModel.CanvasList.Add(conector);
+                                //события двиганья конектора
+                                this.PointerMoved += PointerMoveDrawLine;
+                                this.PointerReleased += PointerPressedReleasedDrawLine;
+                            }                           
                         }
                     }
                     else

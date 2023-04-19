@@ -10,8 +10,8 @@ namespace DiagramClass.Models
 {
     public class Connector : AbstractNotifyPropertyChanged
     {
-        private Point startPoint;
-        private Point endPoint;
+        protected Point startPoint;
+        protected Point endPoint;
         public Point StartPoint
         {
             get => startPoint;
@@ -22,7 +22,7 @@ namespace DiagramClass.Models
             get => endPoint;
             set => SetAndRaise(ref endPoint, value);
         }
-        private Avalonia.Point Dpoint = new Avalonia.Point(0, 0);
+        protected Avalonia.Point Dpoint = new Avalonia.Point(0, 0);
         public void ChangeStartPoint(Point dPoint)
         {
             this.StartPoint += dPoint;
