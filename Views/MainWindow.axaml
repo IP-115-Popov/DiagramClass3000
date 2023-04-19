@@ -74,7 +74,7 @@
 				</ItemsControl.ItemsPanel>
 				<ItemsControl.DataTemplates>
 					<DataTemplate DataType="{x:Type models:MyClass}">
-						<class:Class MyTupeText="{Binding MyType}" MyExtension="{Binding Attribute}" TupeName="{Binding Name}" CustomMethList="{Binding MethodList}" CustomProList ="{Binding PropertiList}" Margin="{Binding Margin, Converter={StaticResource stringToThicknessConverter}}"/>
+						<class:Class MyExtension="{Binding Attribute}" MyTupeText="{Binding MyType}" TupeName="{Binding Name}" CustomMethList="{Binding MethodList}" CustomProList ="{Binding PropertiList}" Margin="{Binding Margin, Converter={StaticResource stringToThicknessConverter}}"/>
 					</DataTemplate>
 			
 					<DataTemplate DataType="{x:Type connecters:InheritanceConnector}">

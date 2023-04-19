@@ -29,9 +29,9 @@ namespace DiagramClass.ViewModels
             {
                 new MyClass()
                 {
-                    Attribute ="1",
-                    Name = "2",
-                    MyType ="3",
+                    Attribute ="public",
+                    Name = "Name",
+                    MyType ="Class",
                 }
             };
         }

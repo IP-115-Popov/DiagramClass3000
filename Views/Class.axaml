@@ -15,35 +15,36 @@
 			  <Ellipse Width="10" Height="10" Margin="59,2" Fill="DarkGreen" StrokeThickness="3"/>
 			  <Ellipse Width="10" Height="10" Margin="59,118" Fill="DarkGreen" StrokeThickness="3"/>
 			  <Ellipse Width="10" Height="10" Margin="118,59" Fill="DarkGreen" StrokeThickness="3"/>
-			  <Grid RowDefinitions="*,*,*,*" ColumnDefinitions="*,*,*" Margin="10,10,10,10">
-				  
-				  <TextBlock Grid.Row="0" Grid.Column="0" Text="{TemplateBinding MyTupeText}"/>
-				  <TextBlock Grid.Row="0" Grid.Column="1" Text="{TemplateBinding MyExtension}"/> 
-				  <TextBlock Grid.Row="0" Grid.Column="2" Text="{TemplateBinding TupeName}"/>
-				  
-				  
-				  <ListBox Grid.Row="2" Grid.Column="0" Items="{TemplateBinding CustomMethList}" Name="Metods">
-					  <ListBox.ItemTemplate>
-						  <DataTemplate>
-							  <Grid ColumnDefinitions="*,*,*">
-								  <TextBlock Grid.Column="0" Text="{Binding Аccess}"/>
-								  <TextBlock Grid.Column="1" Text="{Binding Return}"/>
-								  <TextBlock Grid.Column="2" Text="{Binding Name}"/>
-							  </Grid>
-						  </DataTemplate>
-					  </ListBox.ItemTemplate>
-				  </ListBox>
-				  <ListBox Grid.Row="3" Grid.Column="0" Items="{TemplateBinding CustomProList}" Name="Propertis">
-					  <ListBox.ItemTemplate>
-						  <DataTemplate>
-							  <Grid ColumnDefinitions="*,*">
-								  <TextBlock Grid.Column="0" Text="{Binding Аccess}"/>
-								  <TextBlock Grid.Column="1" Text="{Binding Return}"/>
-								  <TextBlock Grid.Column="2" Text="{Binding Name}"/>
-							  </Grid>
-						  </DataTemplate>
-					  </ListBox.ItemTemplate>
-				  </ListBox>
+			  <Grid Height="118" Width="118" RowDefinitions="*,*" Margin="10,10,10,10">
+				  <Grid Grid.Row="0" RowDefinitions="*,*" ColumnDefinitions="*,*,*">
+					  <TextBlock FontSize="10" Grid.Row="0" Grid.Column="0" Text="{TemplateBinding MyTupeText}"/>
+					  <TextBlock FontSize="10" Grid.Row="0" Grid.Column="1" Text="{TemplateBinding MyExtension}"/> 
+					  <TextBlock FontSize="10" Grid.Row="0" Grid.Column="2" Text="{TemplateBinding TupeName}"/>
+				  </Grid>
+				  <Grid Grid.Row="1" RowDefinitions="*,*">
+					  <ListBox Height="10" Grid.Row="0" Items="{TemplateBinding CustomMethList}" Name="Metods">
+						  <ListBox.ItemTemplate>
+							  <DataTemplate>
+								  <Grid ColumnDefinitions="*,*,*">
+									  <TextBlock Grid.Column="0" Text="{Binding Аccess}"/>
+									  <TextBlock Grid.Column="1" Text="{Binding Return}"/>
+									  <TextBlock Grid.Column="2" Text="{Binding Name}"/>
+								  </Grid>
+							  </DataTemplate>
+						  </ListBox.ItemTemplate>
+					  </ListBox>
+					  <ListBox Height="10"  Grid.Row="1" Items="{TemplateBinding CustomProList}" Name="Propertis">
+						  <ListBox.ItemTemplate>
+							  <DataTemplate>
+								  <Grid ColumnDefinitions="*,*,*">
+									  <TextBlock Grid.Column="0" Text="{Binding Аccess}"/>
+									  <TextBlock Grid.Column="1" Text="{Binding Return}"/>
+									  <TextBlock Grid.Column="2" Text="{Binding Name}"/>
+								  </Grid>
+							  </DataTemplate>
+						  </ListBox.ItemTemplate>
+					  </ListBox>
+				  </Grid>
 			  </Grid>
 		  </Canvas>
 		 
