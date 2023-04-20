@@ -1,6 +1,7 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
+using Avalonia.Interactivity;
 using DiagramClass.Models;
 using System.Collections.ObjectModel;
 
@@ -45,6 +46,10 @@ namespace DiagramClass.Views
         {
             get => GetValue(TupeNameProperty);
             set => SetValue(TupeNameProperty, value);
+        }
+        public void DoubleTappedInObject(object sender, RoutedEventArgs args)
+        {
+
         }
     }
 }
