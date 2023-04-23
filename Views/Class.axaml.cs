@@ -9,6 +9,18 @@ namespace DiagramClass.Views
 {
     public class Class : TemplatedControl
     {
+        static Class()
+        {
+            DoubleTappedEvent.AddClassHandler<Class>(
+                (sender, args) => sender.OnDoubleTapped(args));
+        }
+        protected virtual void OnDoubleTapped(RoutedEventArgs routedEventArgs)
+        {
+            SettingsClass window = new SettingsClass();
+            window.Show();
+        }
+
+
         public static readonly StyledProperty<ObservableCollection<Metod>> CustomMethListProperty =
             AvaloniaProperty.Register<Class, ObservableCollection<Metod>>("CustomMethList");
         public ObservableCollection<Metod> CustomMethList
@@ -46,10 +58,6 @@ namespace DiagramClass.Views
         {
             get => GetValue(TupeNameProperty);
             set => SetValue(TupeNameProperty, value);
-        }
-        public void DoubleTappedInObject(object sender, RoutedEventArgs args)
-        {
-
         }
     }
 }

@@ -10,7 +10,7 @@
     <Setter Property="Template">
       <ControlTemplate >
 		  <Canvas Height="128" Width="128" Background="Transparent">
-			  <Rectangle DoubleTapped="DoubleTappedInObject" Height="118" Width="118" Margin="5,5" Stroke="Black" StrokeThickness="2"/>	  
+			  <Rectangle Height="118" Width="118" Margin="5,5" Stroke="Black" StrokeThickness="2"/>	  
 			  <Ellipse Width="10" Height="10" Margin="2,59" Fill="DarkGreen" StrokeThickness="3"/>
 			  <Ellipse Width="10" Height="10" Margin="59,2" Fill="DarkGreen" StrokeThickness="3"/>
 			  <Ellipse Width="10" Height="10" Margin="59,118" Fill="DarkGreen" StrokeThickness="3"/>
