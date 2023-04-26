@@ -15,31 +15,31 @@
 			  <Ellipse Width="10" Height="10" Margin="59,2" Fill="DarkGreen" StrokeThickness="3"/>
 			  <Ellipse Width="10" Height="10" Margin="59,118" Fill="DarkGreen" StrokeThickness="3"/>
 			  <Ellipse Width="10" Height="10" Margin="118,59" Fill="DarkGreen" StrokeThickness="3"/>
-			  <Grid Height="118" Width="118" RowDefinitions="*,*" Margin="10,10,10,10">
+			  <Grid Height="118" Width="118" RowDefinitions="0.2*,*" Margin="10,10,10,10" ShowGridLines="True">
 				  <Grid Grid.Row="0" RowDefinitions="*,*" ColumnDefinitions="*,*,*">
 					  <TextBlock FontSize="10" Grid.Row="0" Grid.Column="0" Text="{TemplateBinding MyTupeText}"/>
 					  <TextBlock FontSize="10" Grid.Row="0" Grid.Column="1" Text="{TemplateBinding MyExtension}"/> 
 					  <TextBlock FontSize="10" Grid.Row="0" Grid.Column="2" Text="{TemplateBinding TupeName}"/>
 				  </Grid>
-				  <Grid Grid.Row="1" RowDefinitions="*,*">
-					  <ListBox Height="10" Grid.Row="0" Items="{TemplateBinding CustomMethList}" Name="Metods">
+				  <Grid Grid.Row="1" RowDefinitions="0.8*,*" ShowGridLines="True"> 
+					  <ListBox Margin="-10,-10" Height="40" Width="100" Grid.Row="0" Items="{TemplateBinding CustomMethList}" Name="Metods">
 						  <ListBox.ItemTemplate>
 							  <DataTemplate>
 								  <Grid ColumnDefinitions="*,*,*">
-									  <TextBlock Grid.Column="0" Text="{Binding Аccess}"/>
-									  <TextBlock Grid.Column="1" Text="{Binding Return}"/>
-									  <TextBlock Grid.Column="2" Text="{Binding Name}"/>
+									  <TextBlock Grid.Column="0" Text="{Binding Аccess}"  FontSize="8"/>
+									  <TextBlock Grid.Column="1" Text="{Binding Return}"  FontSize="8"/>
+									  <TextBlock Grid.Column="2" Text="{Binding Name}"  FontSize="8"/>
 								  </Grid>
 							  </DataTemplate>
 						  </ListBox.ItemTemplate>
 					  </ListBox>
-					  <ListBox Height="10"  Grid.Row="1" Items="{TemplateBinding CustomProList}" Name="Propertis">
+					  <ListBox Height="40"  Width="100" Grid.Row="1" Items="{TemplateBinding CustomProList}" Name="Propertis">
 						  <ListBox.ItemTemplate>
 							  <DataTemplate>
 								  <Grid ColumnDefinitions="*,*,*">
-									  <TextBlock Grid.Column="0" Text="{Binding Аccess}"/>
-									  <TextBlock Grid.Column="1" Text="{Binding Return}"/>
-									  <TextBlock Grid.Column="2" Text="{Binding Name}"/>
+									  <TextBlock Grid.Column="0" Text="{Binding Аccess}"  FontSize="8"/>
+									  <TextBlock Grid.Column="1" Text="{Binding Return}"  FontSize="8"/>
+									  <TextBlock Grid.Column="2" Text="{Binding Name}"  FontSize="8"/>
 								  </Grid>
 							  </DataTemplate>
 						  </ListBox.ItemTemplate>

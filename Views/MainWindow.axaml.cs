@@ -22,6 +22,10 @@ namespace DiagramClass.Views
         }
         private async void OnDoubleTapped(object? sender, RoutedEventArgs routedEventArgs)
         {
+            this.PointerMoved -= PointerMoveDragShape;
+            this.PointerReleased -= PointerReleasedDragShape;
+            this.PointerMoved -= PointerMoveDrawLine;
+            this.PointerReleased -= PointerPressedReleasedDrawLine;
             if (routedEventArgs.Source is Control control)
             {
                 if (control.DataContext is MyClass myClass)
