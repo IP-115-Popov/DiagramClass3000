@@ -41,7 +41,6 @@ namespace DiagramClass.Views
             }
         }
         private Avalonia.Point pointerPressedEvent;
-        //private Avalonia.Point pointerPositionInShape;
         private void PointerPressedOnCanvas(object? sender, PointerPressedEventArgs pointerPressedEventArgs)
         {
             if (pointerPressedEventArgs.Source is Control control)
