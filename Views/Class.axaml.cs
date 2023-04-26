@@ -13,23 +13,23 @@ namespace DiagramClass.Views
     public class Class : TemplatedControl
     {
         private MyClass? retyrnedFormSetings;
-        static Class()
-        {
-            DoubleTappedEvent.AddClassHandler<Class>(
-                (sender, args) => sender.OnDoubleTappedAsync(args));
-        }
-        protected virtual async Task OnDoubleTappedAsync(RoutedEventArgs routedEventArgs)
-        { 
-            SettingsClassView window = new SettingsClassView();
-            //retyrnedFormSetings =
-            //окно заглушка
-            //var mainWindow = new MainWindow
-            if (Avalonia.Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
-            {
-                retyrnedFormSetings = await window.ShowDialog<MyClass>(desktop.MainWindow);
-            }
-            //var result = await ShowDialog.Handle(window);
-        }
+        //static Class()
+        //{
+        //    DoubleTappedEvent.AddClassHandler<Class>(
+        //        (sender, args) => sender.OnDoubleTappedAsync(args));
+        //}
+        //protected virtual async Task OnDoubleTappedAsync(RoutedEventArgs routedEventArgs)
+        //{ 
+        //    SettingsClassView window = new SettingsClassView();
+        //    //retyrnedFormSetings =
+        //    //окно заглушка
+        //    //var mainWindow = new MainWindow
+        //    if (Avalonia.Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+        //    {
+        //       retyrnedFormSetings = await window.ShowDialog<MyClass>(desktop.MainWindow);
+        //    }
+
+        //}
 
 
         public static readonly StyledProperty<ObservableCollection<Metod>> CustomMethListProperty =

@@ -69,7 +69,7 @@
 						  PointerPressed="PointerPressedOnCanvas">
 				<ItemsControl.ItemsPanel>
 					<ItemsPanelTemplate>
-						<Canvas  Height="700" Width="700" Background="Aqua"/>
+						<Canvas DoubleTapped="OnDoubleTapped" Height="700" Width="700" Background="Aqua"/>
 					</ItemsPanelTemplate>
 				</ItemsControl.ItemsPanel>
 				<ItemsControl.DataTemplates>

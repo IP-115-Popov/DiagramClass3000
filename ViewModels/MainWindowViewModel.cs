@@ -14,6 +14,7 @@ namespace DiagramClass.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
+        private MyClass? retyrnedFormSetings;
         private bool inheritance;
         private bool implementation;
         private bool addiction;
@@ -80,6 +81,15 @@ namespace DiagramClass.ViewModels
         {
             get => drawInterface;
             set => this.RaiseAndSetIfChanged(ref drawInterface, value);
+        }
+        public MyClass? RetyrnedFormSetings
+        {
+            get => retyrnedFormSetings;
+            set
+            {
+                retyrnedFormSetings = value;
+                CanvasList.Add(retyrnedFormSetings);
+            }
         }
         public void AddClassOnCanvas()
         {

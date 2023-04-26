@@ -1,5 +1,6 @@
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Controls.Shapes;
 using Avalonia.Input;
 using Avalonia.Interactivity;
@@ -18,6 +19,22 @@ namespace DiagramClass.Views
         public MainWindow()
         {
             InitializeComponent();          
+        }
+        private async void OnDoubleTapped(object? sender, RoutedEventArgs routedEventArgs)
+        {
+            if (routedEventArgs.Source is Control control)
+            {
+                if (control.DataContext is MyClass myClass)
+                {
+                    SettingsClassView window = new SettingsClassView(myClass);
+                    if (this.DataContext is MainWindowViewModel viewModel)
+                    {              
+                        viewModel.RetyrnedFormSetings = await window.ShowDialog<MyClass>(this);
+                        viewModel.RetyrnedFormSetings.MyType = "Class";
+                        viewModel.CanvasList.Remove(myClass);
+                    }
+                }
+            }
         }
         private Avalonia.Point pointerPressedEvent;
         //private Avalonia.Point pointerPositionInShape;

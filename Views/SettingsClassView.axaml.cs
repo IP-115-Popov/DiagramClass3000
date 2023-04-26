@@ -1,27 +1,43 @@
 using Avalonia.Controls;
+using Avalonia.Interactivity;
 using Avalonia.ReactiveUI;
 using DiagramClass.Models;
 using DiagramClass.ViewModels;
 using ReactiveUI;
 using System;
+using System.Collections.ObjectModel;
 using System.Reactive;
 
 namespace DiagramClass.Views
 {
-    public partial class SettingsClassView :  ReactiveWindow<SettingsClassViewModel>
+    public partial class SettingsClassView : Window
     {
         public SettingsClassView()
         {
             InitializeComponent();
             DataContext = new SettingsClassViewModel();
-
-            if (this.DataContext is SettingsClassViewModel dataContext) 
+        }
+        public SettingsClassView(MyClass myClass)
+        {         
+                InitializeComponent();
+            DataContext = new SettingsClassViewModel();
+            if (myClass != null)
             {
-                //RetyrnedMyClass передаст MyClass в Close который пиринемает object и там где вызвано окно вернйтся MyClass
-                //dataContext.RetyrnedMyClass.Subscribe(Close);
-                this.WhenActivated(d => d(dataContext.RetyrnedMyClass.Subscribe(Close)));
+                if (this.DataContext is SettingsClassViewModel dataContext)
+                {
+                    dataContext.Attribute = myClass.Attribute;
+                    dataContext.Name = myClass.Name;
+                    dataContext.MethodList = myClass.MethodList;
+                    dataContext.PropertiList = myClass.PropertiList;
+                }
             }
-            //this.WhenActivated(d => d(ViewModel!.RetyrnedMyClass.Subscribe(Close)));
+        }
+        private void CloseButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (this.DataContext is SettingsClassViewModel dataContext)
+            {
+                Close(dataContext.RetyrnedMyClassF());
+            }
         }
     }
 }

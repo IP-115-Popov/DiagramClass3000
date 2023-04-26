@@ -55,15 +55,15 @@ namespace DiagramClass.ViewModels
                     Name = nameСhangeProperti
                 });
             });
-            RetyrnedMyClass = ReactiveCommand.Create<Unit, MyClass>(_ =>
-                new MyClass()
-                {
-                    Attribute = this.Attribute,
-                    Name = this.Name,
-                    MethodList = this.methodList,
-                    PropertiList = this.PropertiList,
-                }
-            );
+            //RetyrnedMyClass = ReactiveCommand.Create<Unit, MyClass>(_ =>
+            //    new MyClass()
+            //    {
+            //        Attribute = this.Attribute,
+            //        Name = this.Name,
+            //        MethodList = this.methodList,
+            //        PropertiList = this.PropertiList,
+            //    }
+            //);
 
         }
         public string? Attribute
@@ -136,6 +136,16 @@ namespace DiagramClass.ViewModels
         public ReactiveCommand<Unit, Unit> AddMethod { get; set; }
         public ReactiveCommand<Unit, Unit> AddProperti { get; set; }
 
-        public ReactiveCommand<Unit, MyClass> RetyrnedMyClass { get; set; }
+        //public ReactiveCommand<Unit, MyClass> RetyrnedMyClass { get; set; }
+        public MyClass RetyrnedMyClassF()
+        {
+            return new MyClass()
+            {
+                Attribute = this.Attribute,
+                Name = this.Name,
+                MethodList = this.methodList,
+                PropertiList = this.PropertiList,
+            };
+        }
     }
 }
