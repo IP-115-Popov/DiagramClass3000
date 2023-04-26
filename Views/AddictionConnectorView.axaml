@@ -1,0 +1,22 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:DiagramClass.Views">
+  <Design.PreviewWith>
+	  <controls:AddictionConnectorView StartPoint="80,80" EndPoint="90,90"/>
+  </Design.PreviewWith>
+
+  <Style Selector="controls|AddictionConnectorView">
+    <!-- Set Defaults -->
+    <Setter Property="Template">
+      <ControlTemplate>
+		  <Canvas Height="100" Width="100" Background="Transparent">
+			  <Line   StartPoint="{TemplateBinding StartPointCastom}"
+					  EndPoint="{TemplateBinding EndPointCastom}"
+					  StrokeThickness="3"
+					  Stroke="Black"
+					/>
+		  </Canvas>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+</Styles>

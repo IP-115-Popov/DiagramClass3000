@@ -12,7 +12,7 @@ namespace DiagramClass.Views
 {
     public class Class : TemplatedControl
     {
-        private MyClass? retyrnedFormSetings;
+        //private MyClass? retyrnedFormSetings;
 
         public static readonly StyledProperty<ObservableCollection<Metod>> CustomMethListProperty =
             AvaloniaProperty.Register<Class, ObservableCollection<Metod>>("CustomMethList");
