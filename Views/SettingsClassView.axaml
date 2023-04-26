@@ -1,0 +1,80 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:Models="clr-namespace:DiagramClass.Models"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="DiagramClass.Views.SettingsClassView"
+        Title="SettingsClassView">
+	<Window.DataTemplates>
+			<DataTemplate DataType="{x:Type Models:Metod}">
+				<Grid ColumnDefinitions="*,*,*,*">
+					<TextBlock Grid.Column="0" Text="{Binding Аccess}"/>
+					<TextBlock Grid.Column="1" Text="{Binding Return}"/>
+					<TextBlock Grid.Column="2" Text="{Binding Name}"/>
+					<TextBlock Grid.Column="3" Text="{Binding Arguments}"/>
+				</Grid>
+			</DataTemplate>
+			<DataTemplate DataType="{x:Type Models:Properti}">
+				<Grid ColumnDefinitions="*,*,*">
+					<TextBlock Grid.Column="0" Text="{Binding Аccess}"/>
+					<TextBlock Grid.Column="1" Text="{Binding Return}"/>
+					<TextBlock Grid.Column="2" Text="{Binding Name}"/>
+				</Grid>
+			</DataTemplate>
+	</Window.DataTemplates>
+	<TabControl>
+		<TabItem>
+			<TabItem.Header>
+				<TextBlock Text="Атрибуты"/>
+			</TabItem.Header>
+			<Grid RowDefinitions="0.1*,0.1*,*" ColumnDefinitions="*,*">
+				<TextBlock Grid.Row="0" Text="модификотор доступа к классу"/>
+				<TextBox Grid.Row="1" Text="{Binding Attribute}"/>
+				<TextBlock Grid.Row="0" Grid.Column="1" Text="Имя класса"/>
+				<TextBox Grid.Row="1"  Grid.Column="1" Text="{Binding Name}"/>
+			</Grid>
+		</TabItem>
+		<TabItem>
+			<TabItem.Header>
+				<TextBlock Text="Методы"/>
+			</TabItem.Header>
+			<Grid RowDefinitions="0.2*,*">
+				<Grid Grid.Row="0" ColumnDefinitions="*,*,*,*,*" RowDefinitions="*,*">
+					<TextBlock Grid.Row="0" Grid.Column="0" Text="Мод. доступа"/>
+					<TextBlock Grid.Row="0" Grid.Column="1" Text="Тип воз. значения"/>
+					<TextBlock Grid.Row="0" Grid.Column="2" Text="Имя"/>
+					<TextBlock Grid.Row="0" Grid.Column="3" Text="Аргументы"/>
+
+					<TextBox Grid.Row="1" Grid.Column="0" Text="{Binding AttributeСhangeMethod}"/>
+					<TextBox Grid.Row="1" Grid.Column="1" Text="{Binding TupeСhangeMethod}"/>
+					<TextBox Grid.Row="1" Grid.Column="2" Text="{Binding NameСhangeMethod}"/>
+					<TextBox Grid.Row="1" Grid.Column="3" Text="{Binding ArgumentsСhangeMethod}"/>
+					
+					<Button  Grid.Row="0" Grid.Column="4" Grid.RowSpan="1" Content="Добавить" Command="{Binding AddMethod}"/>
+				</Grid>
+				<ListBox Grid.Row="1" Items="{Binding MethodList}" SelectedItem="{Binding SelectedMethod}"/>
+			</Grid>
+		</TabItem>
+		<TabItem>
+			<TabItem.Header>
+				<TextBlock Text="Своиства"/>
+			</TabItem.Header>
+			<Grid RowDefinitions="0.2*,*">
+				<Grid Grid.Row="0" ColumnDefinitions="*,*,*,*" RowDefinitions="*,*">
+					<TextBlock Grid.Row="0" Grid.Column="0" Text="Мод. доступа"/>
+					<TextBlock Grid.Row="0" Grid.Column="1" Text="Тип воз. значения"/>
+					<TextBlock Grid.Row="0" Grid.Column="2" Text="Имя"/>
+					<TextBlock Grid.Row="0" Grid.Column="3" Text="Аргументы"/>
+
+					<TextBox Grid.Row="1" Grid.Column="0" Text="{Binding AttributeСhangeProperti}"/>
+					<TextBox Grid.Row="1" Grid.Column="1" Text="{Binding TupeСhangeProperti}"/>
+					<TextBox Grid.Row="1" Grid.Column="2" Text="{Binding NameСhangeProperti}"/>
+					
+					<Button  Grid.Row="0" Grid.Column="3" Grid.RowSpan="1" Content="Добавить" Command="{Binding AddProperti}"/>
+				</Grid>
+				<ListBox Grid.Row="1" Items="{Binding PropertiList}" SelectedItem="{Binding SelectedProperti}"/>
+			</Grid>
+		</TabItem>
+	</TabControl>
+</Window>

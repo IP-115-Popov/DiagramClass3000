@@ -15,7 +15,7 @@ namespace DiagramClass.Models
         private string? access;
         private string? myReturn;
         private string? name;
-    
+        private string? arguments;
         public string? Аccess
         {
             get => access;
@@ -31,6 +31,11 @@ namespace DiagramClass.Models
         {
             get => name;
             set => SetAndRaise(ref name, value);
+        }
+        public string? Arguments
+        {
+            get => arguments;
+            set => SetAndRaise(ref arguments, value);
         }
     }
 }

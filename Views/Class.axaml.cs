@@ -3,6 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Interactivity;
 using DiagramClass.Models;
+using DiagramClass.ViewModels;
 using System.Collections.ObjectModel;
 
 namespace DiagramClass.Views
@@ -16,7 +17,7 @@ namespace DiagramClass.Views
         }
         protected virtual void OnDoubleTapped(RoutedEventArgs routedEventArgs)
         {
-            SettingsClass window = new SettingsClass();
+            SettingsClassView window = new SettingsClassView();
             window.Show();
         }
 

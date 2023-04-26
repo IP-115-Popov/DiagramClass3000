@@ -1,15 +1,18 @@
 using Avalonia.Controls;
 using DiagramClass.Models;
+using DiagramClass.ViewModels;
 using ReactiveUI;
 using System.Reactive;
 
 namespace DiagramClass.Views
 {
-    public partial class SettingsClass : Window
+    public partial class SettingsClassView : Window
     {
-        public SettingsClass()
+        public SettingsClassView()
         {
             InitializeComponent();
+            DataContext = new SettingsClassViewModel();
+
             CloseMyWindow = ReactiveCommand.Create<Unit, MyClass>(
                 _ =>
                 new MyClass()
@@ -17,12 +20,6 @@ namespace DiagramClass.Views
 
                 }
                 );
-        }
-        private string? mod;
-        public string? Mod
-        {
-            get;
-            set;
         }
         public ReactiveCommand<Unit, MyClass> CloseMyWindow;
     }
