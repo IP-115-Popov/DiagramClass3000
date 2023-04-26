@@ -6,6 +6,14 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="DiagramClass.Views.SettingsClassView"
         Title="SettingsClassView">
+	<Window.Styles>
+		<Style Selector="Button">
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+			<Setter Property="HorizontalAlignment" Value="Stretch"/>
+			<Setter Property="VerticalAlignment" Value="Stretch"/>
+		</Style>		
+	</Window.Styles>
 	<Window.DataTemplates>
 			<DataTemplate DataType="{x:Type Models:Metod}">
 				<Grid ColumnDefinitions="*,*,*,*">
@@ -65,7 +73,6 @@
 					<TextBlock Grid.Row="0" Grid.Column="0" Text="Мод. доступа"/>
 					<TextBlock Grid.Row="0" Grid.Column="1" Text="Тип воз. значения"/>
 					<TextBlock Grid.Row="0" Grid.Column="2" Text="Имя"/>
-					<TextBlock Grid.Row="0" Grid.Column="3" Text="Аргументы"/>
 
 					<TextBox Grid.Row="1" Grid.Column="0" Text="{Binding AttributeСhangeProperti}"/>
 					<TextBox Grid.Row="1" Grid.Column="1" Text="{Binding TupeСhangeProperti}"/>
