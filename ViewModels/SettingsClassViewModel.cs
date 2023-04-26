@@ -31,14 +31,14 @@ namespace DiagramClass.ViewModels
         private string? attributeСhangeProperti;
         private string? tupeСhangeProperti;
         private string? nameСhangeProperti;
-        public  SettingsClassViewModel()
+        public SettingsClassViewModel()
         {
             Attribute = "private";
             methodList = new ObservableCollection<Metod>();
             propertiList = new ObservableCollection<Properti>();
             AddMethod = ReactiveCommand.Create(() =>
             {
-                methodList.Add(new Metod() 
+                methodList.Add(new Metod()
                 {
                     Аccess = attributeСhangeMethod,
                     Return = tupeСhangeMethod,
@@ -48,15 +48,24 @@ namespace DiagramClass.ViewModels
             });
             AddProperti = ReactiveCommand.Create(() =>
             {
-                propertiList.Add(new Properti() 
+                propertiList.Add(new Properti()
                 {
                     Аccess = attributeСhangeProperti,
                     Return = tupeСhangeProperti,
                     Name = nameСhangeProperti
-                });            
+                });
             });
+            RetyrnedMyClass = ReactiveCommand.Create<Unit, MyClass>(_ =>
+                new MyClass()
+                {
+                    Attribute = this.Attribute,
+                    Name = this.Name,
+                    MethodList = this.methodList,
+                    PropertiList = this.PropertiList,
+                }
+            );
+
         }
-        
         public string? Attribute
         {
             get => attribute;
@@ -126,5 +135,7 @@ namespace DiagramClass.ViewModels
         }
         public ReactiveCommand<Unit, Unit> AddMethod { get; set; }
         public ReactiveCommand<Unit, Unit> AddProperti { get; set; }
+
+        public ReactiveCommand<Unit, MyClass> RetyrnedMyClass { get; set; }
     }
 }

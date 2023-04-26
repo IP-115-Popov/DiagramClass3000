@@ -48,7 +48,7 @@ namespace DiagramClass.Models
             get => attribute;
             set => SetAndRaise(ref attribute, value);
         }
-        public string Name
+        public string? Name
         {
             get => name;
             set => SetAndRaise(ref name, value);

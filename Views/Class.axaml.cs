@@ -1,24 +1,34 @@
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Controls.Primitives;
 using Avalonia.Interactivity;
 using DiagramClass.Models;
 using DiagramClass.ViewModels;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 namespace DiagramClass.Views
 {
     public class Class : TemplatedControl
     {
+        private MyClass? retyrnedFormSetings;
         static Class()
         {
             DoubleTappedEvent.AddClassHandler<Class>(
-                (sender, args) => sender.OnDoubleTapped(args));
+                (sender, args) => sender.OnDoubleTappedAsync(args));
         }
-        protected virtual void OnDoubleTapped(RoutedEventArgs routedEventArgs)
-        {
+        protected virtual async Task OnDoubleTappedAsync(RoutedEventArgs routedEventArgs)
+        { 
             SettingsClassView window = new SettingsClassView();
-            window.Show();
+            //retyrnedFormSetings =
+            //окно заглушка
+            //var mainWindow = new MainWindow
+            if (Avalonia.Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+            {
+                retyrnedFormSetings = await window.ShowDialog<MyClass>(desktop.MainWindow);
+            }
+            //var result = await ShowDialog.Handle(window);
         }
 
 
