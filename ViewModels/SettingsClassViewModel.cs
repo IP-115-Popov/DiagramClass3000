@@ -129,8 +129,6 @@ namespace DiagramClass.ViewModels
         }
         public ReactiveCommand<Unit, Unit> AddMethod { get; set; }
         public ReactiveCommand<Unit, Unit> AddProperti { get; set; }
-
-        //public ReactiveCommand<Unit, MyClass> RetyrnedMyClass { get; set; }
         public MyClass RetyrnedMyClassF()
         {
             return new MyClass()

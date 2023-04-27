@@ -34,7 +34,6 @@ namespace DiagramClass.Views
                     if (this.DataContext is MainWindowViewModel viewModel)
                     {              
                         viewModel.RetyrnedFormSetings = await window.ShowDialog<MyClass>(this);
-                        //viewModel.RetyrnedFormSetings.MyType = "Class";
                         viewModel.CanvasList.Remove(myClass);
                     }
                 }

@@ -82,10 +82,6 @@ namespace DiagramClass.Models
             get => myType;
             set => SetAndRaise(ref myType, value);
         }
-        //public void MarginHandlerNotifyImvoker(Avalonia.Point point)
-        //{
-
-        //}
         public delegate void MarginHandler(Avalonia.Point point);
         public event MarginHandler? MarginHandlerNotify;
     }
