@@ -96,21 +96,26 @@
 					</DataTemplate>
 			
 					<DataTemplate DataType="{x:Type connecters:InheritanceConnector}">
-						<Line StartPoint="{Binding StartPoint}"
-							  EndPoint="{Binding EndPoint}"
-							  StrokeThickness="3"
-							  Stroke="Red"
-							  />
-					</DataTemplate>
-					<DataTemplate DataType="{x:Type connecters:ImplementationConnector}">
-						<Line StrokeDashArray="2, 1" StartPoint="{Binding StartPoint}"
+						<Panel>
+							<Line StartPoint="{Binding StartPoint}"
 							  EndPoint="{Binding EndPoint}"
 							  StrokeThickness="3"
 							  Stroke="Yellow"
 							  />
+							<Canvas Margin="{Binding EndPoint, Converter={StaticResource stringToThicknessConverter}}">
+								<Polygon   Points="-20,-10 0,0 -20,10" Fill="White" StrokeThickness="2" Stroke="Black">
+									<Polygon.RenderTransform>
+										<TransformGroup>
+											<RotateTransform Angle="{Binding AngleHead}"
+																CenterX="0"
+																CenterY="-5"/>
+										</TransformGroup>
+									</Polygon.RenderTransform>
+								</Polygon>
+							</Canvas>
+						</Panel>
 					</DataTemplate>
-					<DataTemplate DataType="{x:Type connecters:AddictionConnector}">
-						
+					<DataTemplate DataType="{x:Type connecters:ImplementationConnector}">
 						<Panel>
 							<Line StrokeDashArray="2, 1" StartPoint="{Binding StartPoint}"
 							  EndPoint="{Binding EndPoint}"
@@ -118,38 +123,97 @@
 							  Stroke="Yellow"
 							  />
 							<Canvas Margin="{Binding EndPoint, Converter={StaticResource stringToThicknessConverter}}">
-								<Polygon  Points="-20,-10 0,0 -20,10" Fill="White" StrokeThickness="2" Stroke="Black">
+								<Polygon   Points="-20,-10 0,0 -20,10" Fill="White" StrokeThickness="2" Stroke="Black">
 									<Polygon.RenderTransform>
 										<TransformGroup>
 											<RotateTransform Angle="{Binding AngleHead}"
 																CenterX="0"
-																CenterY="-5"/>											
+																CenterY="-5"/>
 										</TransformGroup>
 									</Polygon.RenderTransform>
 								</Polygon>
 							</Canvas>
 						</Panel>
 					</DataTemplate>
-					<DataTemplate DataType="{x:Type connecters:AggregationConnector}">
-						<Line StartPoint="{Binding StartPoint}"
+					<DataTemplate DataType="{x:Type connecters:AddictionConnector}">						
+						<Panel>
+							<Line StrokeDashArray="2, 1" StartPoint="{Binding StartPoint}"
 							  EndPoint="{Binding EndPoint}"
 							  StrokeThickness="3"
-							  Stroke="Bisque"
+							  Stroke="Yellow"
 							  />
+							<Canvas Margin="{Binding EndPoint, Converter={StaticResource stringToThicknessConverter}}">
+								<Polyline   Points="-20,-10 0,0 -20,10" Fill="White" StrokeThickness="2" Stroke="Black">
+									<Polyline.RenderTransform>
+										<TransformGroup>
+											<RotateTransform Angle="{Binding AngleHead}"
+																CenterX="0"
+																CenterY="-5"/>
+										</TransformGroup>
+									</Polyline.RenderTransform>
+								</Polyline>
+							</Canvas>
+						</Panel>
+					</DataTemplate>
+					<DataTemplate DataType="{x:Type connecters:AggregationConnector}">
+						<Panel>
+							<Line StrokeDashArray="2, 1" StartPoint="{Binding StartPoint}"
+							  EndPoint="{Binding EndPoint}"
+							  StrokeThickness="3"
+							  Stroke="Yellow"
+							  />
+							<Canvas Margin="{Binding EndPoint, Converter={StaticResource stringToThicknessConverter}}">
+								<Polygon   Points="-20,-10 0,0 -20,10 -40,0" Fill="White" StrokeThickness="2" Stroke="Black">
+									<Polygon.RenderTransform>
+										<TransformGroup>
+											<RotateTransform Angle="{Binding AngleHead}"
+																CenterX="0"
+																CenterY="-5"/>
+										</TransformGroup>
+									</Polygon.RenderTransform>
+								</Polygon>
+							</Canvas>
+						</Panel>
 					</DataTemplate>
 					<DataTemplate DataType="{x:Type connecters:CompositionConnector}">
-						<Line StartPoint="{Binding StartPoint}"
+						<Panel>
+							<Line StrokeDashArray="2, 1" StartPoint="{Binding StartPoint}"
 							  EndPoint="{Binding EndPoint}"
 							  StrokeThickness="3"
-							  Stroke="Pink"
+							  Stroke="Yellow"
 							  />
+							<Canvas Margin="{Binding EndPoint, Converter={StaticResource stringToThicknessConverter}}">
+								<Polygon   Points="-20,-10 0,0 -20,10 -40,0" Fill="Black" StrokeThickness="2" Stroke="Black">
+									<Polygon.RenderTransform>
+										<TransformGroup>
+											<RotateTransform Angle="{Binding AngleHead}"
+																CenterX="0"
+																CenterY="-5"/>
+										</TransformGroup>
+									</Polygon.RenderTransform>
+								</Polygon>
+							</Canvas>
+						</Panel>
 					</DataTemplate>
 					<DataTemplate DataType="{x:Type connecters:AssociationConnector}">
-						<Line StartPoint="{Binding StartPoint}"
+						<Panel>
+							<Line StartPoint="{Binding StartPoint}"
 							  EndPoint="{Binding EndPoint}"
 							  StrokeThickness="3"
-							  Stroke="Gray"
+							  Stroke="Yellow"
 							  />
+							<Canvas Margin="{Binding EndPoint, Converter={StaticResource stringToThicknessConverter}}">
+								<Polyline   Points="-20,-10 0,0 -20,10" Fill="White" StrokeThickness="2" Stroke="Black">
+									<Polyline.RenderTransform>
+										<TransformGroup>
+											<RotateTransform Angle="{Binding AngleHead}"
+																CenterX="0"
+																CenterY="-5"/>
+										</TransformGroup>
+									</Polyline.RenderTransform>
+								</Polyline>
+							</Canvas>
+						</Panel>
 					</DataTemplate>
 					</ItemsControl.DataTemplates>
 			</ItemsControl>

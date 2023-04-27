@@ -19,10 +19,7 @@ namespace DiagramClass.Models
             set
             {
                 SetAndRaise(ref startPoint, value);
-                //angleHeadChange();
-                //AngleHead = Math.Atan(System.Convert.ToDouble(((startPoint.X - endPoint.X) / (startPoint.X - endPoint.X)).ToString()));
-                AngleHead = Math.Atan((endPoint - startPoint).Y / (endPoint - startPoint).X);
-                //AngleHead += 0.1;
+                AngleHead = Math.Atan2((endPoint - startPoint).Y ,(endPoint - startPoint).X) * 57.29577951308;
             }
         }
         public Point EndPoint
@@ -31,10 +28,7 @@ namespace DiagramClass.Models
             set
             { 
                 SetAndRaise(ref endPoint, value);
-                //System.Convert.ToDouble((((Avalonia.Point)value).Y).ToString());
-                AngleHead = Math.Atan2((endPoint-startPoint).Y,(endPoint - startPoint).X)* 57.29577951308;
-                                               
-                //AngleHead += 0.1;
+                AngleHead = Math.Atan2((endPoint-startPoint).Y, (endPoint - startPoint).X)* 57.29577951308;
             }
         }
         public double AngleHead
