@@ -41,9 +41,9 @@
 					<TextBlock Text="Атрибуты"/>
 				</TabItem.Header>
 				<Grid RowDefinitions="0.1*,0.1*,*" ColumnDefinitions="*,*">
-					<TextBlock Grid.Row="0" Text="модификотор доступа к классу"/>
+					<TextBlock Grid.Row="0" Text="модификотор доступа"/>
 					<TextBox Grid.Row="1" Text="{Binding Attribute}"/>
-					<TextBlock Grid.Row="0" Grid.Column="1" Text="Имя класса"/>
+					<TextBlock Grid.Row="0" Grid.Column="1" Text="Имя"/>
 					<TextBox Grid.Row="1"  Grid.Column="1" Text="{Binding Name}"/>
 				</Grid>
 			</TabItem>

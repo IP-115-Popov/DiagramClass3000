@@ -16,6 +16,8 @@ namespace DiagramClass.ViewModels
 {
     public class SettingsClassViewModel : ViewModelBase
     {
+        public string? myType;
+
         private string? attribute;
         private string? name;
         private ObservableCollection<Metod>? methodList;
@@ -131,7 +133,8 @@ namespace DiagramClass.ViewModels
         public MyClass RetyrnedMyClassF()
         {
             return new MyClass()
-            {
+            { 
+                MyType = this.myType,
                 Attribute = this.Attribute,
                 Name = this.Name,
                 MethodList = this.methodList,
