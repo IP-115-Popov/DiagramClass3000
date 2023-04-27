@@ -1,6 +1,10 @@
 using Avalonia;
+using Avalonia.Collections;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
+using DynamicData.Binding;
+using System;
+using System.Collections;
 
 namespace DiagramClass.Views.ConnectorsView
 {
@@ -20,5 +24,14 @@ namespace DiagramClass.Views.ConnectorsView
             get => GetValue(EndPointCastomProperty);
             set => SetValue(EndPointCastomProperty, value);
         }
+
+
+        //public static readonly StyledProperty<double> AngleCastomProperty =
+        //AvaloniaProperty.Register<InheritanceConnector, double>("AngleCastom");
+        //public double AngleCastom
+        //{
+        //    get => GetValue(AngleCastomProperty);
+        //    set => SetValue(AngleCastomProperty, value);
+        //}
     }
 }

@@ -10,5 +10,6 @@
         <FluentTheme Mode="Light"/>
 		    <StyleInclude Source="avares://DiagramClass/Views/Class.axaml"/>
 		    <StyleInclude Source="/Views/ConnectorsView/InheritanceConnector.axaml"/>
+		    <StyleInclude Source="/Views/ConnectorsView/InheritanceConnectorView.axaml"/>
     </Application.Styles>
 </Application>

@@ -1,19 +1,39 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:controls="using:DiagramClass.Views.ConnectorsView">
+        xmlns:controls="using:DiagramClass.Views.ConnectorsView"
+		xmlns:convertors="using:DiagramClass.Models.Converters">
   <Design.PreviewWith>
-    <controls:InheritanceConnector EndPointCastom="80,80" StartPointCastom="90,90"/>
+	  <Canvas Height="2000" Width="2000">
+			<controls:InheritanceConnector EndPointCastom="90,90" StartPointCastom="20,20"/>
+		 
+	  </Canvas>
   </Design.PreviewWith>
 
   <Style Selector="controls|InheritanceConnector">
+	  <Style.Resources>
+		  <convertors:PointsToXConverter x:Key="pointsToXConverter"/>
+		  <convertors:PointsToYConverter x:Key="pointsToYConverter"/>
+		  <convertors:StringToThicknessConverter x:Key="stringToThicknessConverter"/>
+	  </Style.Resources>
     <!-- Set Defaults -->
     <Setter Property="Template">
       <ControlTemplate>
-			<Line   StartPoint="{TemplateBinding StartPointCastom}"
+		  <Canvas Height="1028" Width="1028" Background="Transparent">
+			<Line Name="MainLine"  StartPoint="{TemplateBinding StartPointCastom}"
 					EndPoint="{TemplateBinding EndPointCastom}"
-					StrokeThickness="5"
+					StrokeThickness="3"
 					Stroke="Black"
 				/>
+			  <!--<Polygon Margin="{TemplateBinding EndPointCastom, Converter={StaticResource stringToThicknessConverter}}" Points="-20,-10 0,0 -20,10" Fill="White" StrokeThickness="2" Stroke="Black">
+				  <Polygon.RenderTransform>
+					  <TransformGroup>
+						  <RotateTransform Angle="{TemplateBinding AngleCastom}"										   
+										   CenterX="0"
+										   CenterY="-5"/>						  
+					  </TransformGroup>
+				  </Polygon.RenderTransform>
+			  </Polygon>-->
+			</Canvas>
       </ControlTemplate>
     </Setter>
   </Style>

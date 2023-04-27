@@ -1,0 +1,49 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:DiagramClass.Views.ConnectorsView">
+  <Design.PreviewWith>
+	  <Canvas Height="200" Width="200">
+		  <controls:InheritanceConnectorView StartPointCastom="0,0" EndPointCastom="90,90" />
+
+	  </Canvas>
+  </Design.PreviewWith>
+
+  <Style Selector="controls|InheritanceConnectorView">
+    <!-- Set Defaults -->
+    <Setter Property="Template">
+      <ControlTemplate>
+		  <Panel>
+			  <!--<Line StartPoint="0,0"
+					EndPoint="100,-100"
+					StrokeThickness="4"
+					Stroke="Red"
+					Margin="100,100">
+				  <Line.RenderTransform>
+					  <TransformGroup>
+						  <RotateTransform Angle="0"
+										   CenterX="-50"
+										   CenterY="0"/>
+					  </TransformGroup>
+				  </Line.RenderTransform>
+			  </Line>-->
+			 <Line Name="MainLine"  StartPoint="{TemplateBinding StartPointCastom}"
+					  EndPoint="{TemplateBinding EndPointCastom}"
+					  StrokeThickness="3"
+					  Stroke="Black"
+				/>
+			<Polygon Points="0,0 0,20 20,10" Fill="White" StrokeThickness="2" Stroke="Black">
+				<Polygon.RenderTransform>
+					<TransformGroup>
+						<TranslateTransform X="{Binding MainLine.EndPoint , Converter={StaticResource pointsToXConverter}}"
+											Y="{Binding MainLine.EndPoint , Converter={StaticResource pointsToYConverter}}"/>
+						<RotateTransform Angle="0"
+										CenterX="{Binding MainLine.EndPoint , Converter={StaticResource pointsToXConverter}}"
+										CenterY="{Binding MainLine.EndPoint , Converter={StaticResource pointsToYConverter}}"/>
+					</TransformGroup>
+				</Polygon.RenderTransform>
+			</Polygon>
+		  </Panel>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+</Styles>

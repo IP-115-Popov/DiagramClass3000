@@ -1,5 +1,4 @@
 ﻿using Avalonia.Data.Converters;
-using Avalonia;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -7,18 +6,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DiagramClass.Models
+namespace DiagramClass.Models.Converters
 {
-    public class StringToThicknessConverter : IValueConverter
+    public class PointsToYConverter : IValueConverter
     {
         public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
-            return Avalonia.Thickness.Parse(value.ToString());
+            return System.Convert.ToDouble((((Avalonia.Point)value).Y).ToString()); 
         }
 
         public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
-            return ((Thickness)value).ToString();
+            return ((Avalonia.Point)value).Y;
         }
     }
 }
