@@ -13,22 +13,22 @@ namespace DiagramClass.Models.SaverLoder
 {
     public class ToSerialisedListConverter
     {
-        private List<MyClassForSaveLoad> myClassList;
-        private List<InheritanceConnectorForSaveLoad> inheritanceConnectorList;
-        private List<ImplementationConnectorForSaveLoad> implementationConnectorList;
-        private List<AddictionConnectorForSaveLoad> addictionConnectorList;
-        private List<AggregationConnectorForSaveLoad> aggregationConnectorList;
-        private List<CompositionConnectorForSaveLoad> compositionConnectorList;
-        private List<AssociationConnectorForSaveLoad> associationConnectorList;
+        //private List<MyClassForSaveLoad> myClassList;
+        //private List<InheritanceConnectorForSaveLoad> inheritanceConnectorList;
+        //private List<ImplementationConnectorForSaveLoad> implementationConnectorList;
+        //private List<AddictionConnectorForSaveLoad> addictionConnectorList;
+        //private List<AggregationConnectorForSaveLoad> aggregationConnectorList;
+        //private List<CompositionConnectorForSaveLoad> compositionConnectorList;
+        //private List<AssociationConnectorForSaveLoad> associationConnectorList;
         public ToSerialisedListConverter() 
         {
-            myClassList = new List<MyClassForSaveLoad>();
-            inheritanceConnectorList = new List<InheritanceConnectorForSaveLoad>();
-            implementationConnectorList = new List<ImplementationConnectorForSaveLoad>();
-            addictionConnectorList = new List<AddictionConnectorForSaveLoad>();
-            aggregationConnectorList = new List<AggregationConnectorForSaveLoad>();
-            compositionConnectorList = new List<CompositionConnectorForSaveLoad>();
-            associationConnectorList = new List<AssociationConnectorForSaveLoad>();
+            MyClassList = new List<MyClassForSaveLoad>();
+            InheritanceConnectorList = new List<InheritanceConnectorForSaveLoad>();
+            ImplementationConnectorList = new List<ImplementationConnectorForSaveLoad>();
+            AddictionConnectorList = new List<AddictionConnectorForSaveLoad>();
+            AggregationConnectorList = new List<AggregationConnectorForSaveLoad>();
+            CompositionConnectorList = new List<CompositionConnectorForSaveLoad>();
+            AssociationConnectorList = new List<AssociationConnectorForSaveLoad>();
         }
         public void Converter(ObservableCollection<object> myLst)
         {
@@ -36,7 +36,7 @@ namespace DiagramClass.Models.SaverLoder
             {
                 if (i is MyClass)
                 {
-                    myClassList.Add(new MyClassForSaveLoad()
+                    MyClassList.Add(new MyClassForSaveLoad()
                     {
                         Margin = ((MyClass)i).Margin,
                         MyType = ((MyClass)i).MyType,
@@ -47,16 +47,16 @@ namespace DiagramClass.Models.SaverLoder
                     });
                     foreach(Metod metod in ((MyClass)i).MethodList)
                     {
-                        myClassList[myClassList.Count - 1].MethodList.Add(metod);
+                        MyClassList[MyClassList.Count - 1].MethodList.Add(metod);
                     }
                     foreach (Properti properti in ((MyClass)i).PropertiList)
                     {
-                        myClassList[myClassList.Count - 1].PropertiList.Add(properti);
+                        MyClassList[MyClassList.Count - 1].PropertiList.Add(properti);
                     }
                 }
                 else if (i is InheritanceConnector)
                 {
-                    inheritanceConnectorList.Add(new InheritanceConnectorForSaveLoad()
+                    InheritanceConnectorList.Add(new InheritanceConnectorForSaveLoad()
                     {
                         StartPoint = (((InheritanceConnector)i).StartPoint).ToString(),
                         EndPoint = (((InheritanceConnector)i).EndPoint).ToString(),
@@ -65,16 +65,16 @@ namespace DiagramClass.Models.SaverLoder
                 }
                 else if (i is ImplementationConnector)
                 {
-                    implementationConnectorList.Add(new ImplementationConnectorForSaveLoad()
+                    ImplementationConnectorList.Add(new ImplementationConnectorForSaveLoad()
                     {
-                        StartPoint = (((InheritanceConnector)i).StartPoint).ToString(),
-                        EndPoint = (((InheritanceConnector)i).EndPoint).ToString(),
-                        AngleHead = ((InheritanceConnector)i).AngleHead
+                        StartPoint = (((ImplementationConnector)i).StartPoint).ToString(),
+                        EndPoint = (((ImplementationConnector)i).EndPoint).ToString(),
+                        AngleHead = ((ImplementationConnector)i).AngleHead
                     });
                 }
                 else if (i is AddictionConnector)
                 {
-                    addictionConnectorList.Add(new AddictionConnectorForSaveLoad()
+                    AddictionConnectorList.Add(new AddictionConnectorForSaveLoad()
                     {
                         StartPoint = (((AddictionConnector)i).StartPoint).ToString(),
                         EndPoint = (((AddictionConnector)i).EndPoint).ToString(),
@@ -83,7 +83,7 @@ namespace DiagramClass.Models.SaverLoder
                 }
                 else if (i is AggregationConnector)
                 {
-                    aggregationConnectorList.Add(new()
+                    AggregationConnectorList.Add(new()
                     {
                         StartPoint = (((AggregationConnector)i).StartPoint).ToString(),
                         EndPoint = (((AggregationConnector)i).EndPoint).ToString(),
@@ -92,7 +92,7 @@ namespace DiagramClass.Models.SaverLoder
                 }
                 else if (i is CompositionConnector)
                 {
-                    compositionConnectorList.Add(new CompositionConnectorForSaveLoad()
+                    CompositionConnectorList.Add(new CompositionConnectorForSaveLoad()
                     {
                         StartPoint = (((CompositionConnector)i).StartPoint).ToString(),
                         EndPoint = (((CompositionConnector)i).EndPoint).ToString(),
@@ -101,7 +101,7 @@ namespace DiagramClass.Models.SaverLoder
                 }
                 else if (i is AssociationConnector)
                 {
-                    associationConnectorList.Add(new AssociationConnectorForSaveLoad()
+                    AssociationConnectorList.Add(new AssociationConnectorForSaveLoad()
                     {
                         StartPoint = (((AssociationConnector)i).StartPoint).ToString(),
                         EndPoint = (((AssociationConnector)i).EndPoint).ToString(),
@@ -113,13 +113,80 @@ namespace DiagramClass.Models.SaverLoder
         public ObservableCollection<object>? ConverterBack()
         {
             ObservableCollection<object> rezList = new ObservableCollection<object>();
-            foreach (MyClassForSaveLoad i in MyClassList) rezList.Add(i);
-            foreach (InheritanceConnectorForSaveLoad i in InheritanceConnectorList) rezList.Add(i);
-            foreach (ImplementationConnectorForSaveLoad i in ImplementationConnectorList) rezList.Add(i);
-            foreach (AddictionConnectorForSaveLoad i in AddictionConnectorList) rezList.Add(i);
-            foreach (AggregationConnectorForSaveLoad i in AggregationConnectorList) rezList.Add(i);
-            foreach (CompositionConnectorForSaveLoad i in CompositionConnectorList) rezList.Add(i);
-            foreach (AssociationConnectorForSaveLoad i in AssociationConnectorList) rezList.Add(i);
+            foreach (MyClassForSaveLoad i in MyClassList)
+            {
+                rezList.Add(new MyClass()
+                {
+                    Margin = i.Margin,
+                    MyType = i.MyType,
+                    Attribute = i.Attribute,
+                    Name = i.Name,
+                    MethodList = new ObservableCollection<Metod>(),
+                    PropertiList = new ObservableCollection<Properti>()
+                });
+                foreach (Metod metod in i.MethodList)
+                {
+                    ((MyClass)(rezList[rezList.Count - 1])).MethodList.Add(metod);
+                }
+                foreach (Properti properti in i.PropertiList)
+                {
+                    ((MyClass)(rezList[rezList.Count - 1])).PropertiList.Add(properti);
+                }         
+            }
+            foreach (InheritanceConnectorForSaveLoad i in InheritanceConnectorList)
+            {
+                rezList.Add(new InheritanceConnector()
+                {
+                    StartPoint = Avalonia.Point.Parse(i.StartPoint),
+                    EndPoint = Avalonia.Point.Parse(i.EndPoint),
+                    AngleHead = i.AngleHead
+                }); 
+            }
+            foreach (ImplementationConnectorForSaveLoad i in ImplementationConnectorList)
+            {
+                rezList.Add(new ImplementationConnector()
+                {
+                    StartPoint = Avalonia.Point.Parse(i.StartPoint),
+                    EndPoint = Avalonia.Point.Parse(i.EndPoint),
+                    AngleHead = i.AngleHead
+                });
+            }
+            foreach (AddictionConnectorForSaveLoad i in AddictionConnectorList)
+            {
+                rezList.Add(new AddictionConnector()
+                {
+                    StartPoint = Avalonia.Point.Parse(i.StartPoint),
+                    EndPoint = Avalonia.Point.Parse(i.EndPoint),
+                    AngleHead = i.AngleHead
+                });
+            }
+            foreach (AggregationConnectorForSaveLoad i in AggregationConnectorList)
+            {
+                rezList.Add(new AggregationConnector()
+                {
+                    StartPoint = Avalonia.Point.Parse(i.StartPoint),
+                    EndPoint = Avalonia.Point.Parse(i.EndPoint),
+                    AngleHead = i.AngleHead
+                });
+            }
+            foreach (CompositionConnectorForSaveLoad i in CompositionConnectorList)
+            {
+                rezList.Add(new CompositionConnector()
+                {
+                    StartPoint = Avalonia.Point.Parse(i.StartPoint),
+                    EndPoint = Avalonia.Point.Parse(i.EndPoint),
+                    AngleHead = i.AngleHead
+                });
+            }
+            foreach (AssociationConnectorForSaveLoad i in AssociationConnectorList)
+            {
+                rezList.Add(new AssociationConnector()
+                {
+                    StartPoint = Avalonia.Point.Parse(i.StartPoint),
+                    EndPoint = Avalonia.Point.Parse(i.EndPoint),
+                    AngleHead = i.AngleHead
+                });
+            }
             return rezList;
         }
         public List<MyClassForSaveLoad> MyClassList { get; set; }
