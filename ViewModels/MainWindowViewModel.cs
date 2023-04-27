@@ -6,9 +6,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing.Printing;
+using System.IO;
 using System.Reactive;
 using System.Text;
 using System.Xml.Linq;
+using System.Xml.Serialization;
 
 namespace DiagramClass.ViewModels
 {
@@ -106,6 +108,30 @@ namespace DiagramClass.ViewModels
                 MyType = "Interface",
                 Margin = "0,0"
             });
+        }
+        public void Load(string path, string extension)
+        {
+            if (extension == "json")
+            {
+            }
+            else if (extension == "xml")
+            {
+            }
+            else if (extension == "yaml")
+            {
+            }
+        }
+        public void Save(string path, string extension)
+        {
+            if (extension == "json")
+            {
+            }
+            else if (extension == "xml")
+            {             
+            }
+            else if (extension == "yaml")
+            {
+            }           
         }
     }
 }

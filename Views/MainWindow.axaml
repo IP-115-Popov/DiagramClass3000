@@ -25,17 +25,17 @@
 		<Grid Grid.Row="0" ColumnDefinitions="0.3*,0.3*,0.3*,*">
 			<Menu Grid.Column="0">
 				<MenuItem Header="Экспортировать" Name="menuExport">
-					<MenuItem Header="Экспортировать из .xml"/>
-					<MenuItem Header="Экспортировать из .json"/>
-					<MenuItem Header="Экспортировать из .yaml"/>
+					<MenuItem Header="Экспортировать из .xml" Click="OpenFileXml"/>
+					<MenuItem Header="Экспортировать из .json" Click="OpenFileJson"/>
+					<MenuItem Header="Экспортировать из .yaml" Click="OpenFileYaml"/>
 				</MenuItem>
 			</Menu>
 			<Menu Grid.Column="1">
 				<MenuItem Header="Импортировать" Name="menuImport">
-					<MenuItem Header="Экспортировать в .png"/>
-					<MenuItem Header="Импортировать в .xml"/>
-					<MenuItem Header="Импортировать в .json"/>
-					<MenuItem Header="Импортировать в .yaml"/>
+					<MenuItem Header="Экспортировать в .png" Click="SaveFilePng"/>
+					<MenuItem Header="Импортировать в .xml"  Click="SaveFileXml"/>
+					<MenuItem Header="Импортировать в .json" Click="SaveFileJson"/>
+					<MenuItem Header="Импортировать в .yaml" Click="SaveFileYaml"/>
 				</MenuItem>
 			</Menu>
 			<Menu Grid.Column="2">
@@ -73,21 +73,7 @@
 						  PointerPressed="PointerPressedOnCanvas">
 				<ItemsControl.ItemsPanel>
 					<ItemsPanelTemplate>
-						<Canvas DoubleTapped="OnDoubleTapped" Height="600" Width="700" Background="Aqua">
-							<!--<Line StartPoint="0,0"
-								   EndPoint="100,0"
-								   StrokeThickness="4"
-								   Stroke="Red"
-								  Margin="100,100">
-								<Line.RenderTransform>
-									<TransformGroup>
-										<RotateTransform Angle="120"
-														 CenterX="-50"
-														 CenterY="0"/>
-									</TransformGroup>
-								</Line.RenderTransform>
-							</Line>-->
-						</Canvas>
+						<Canvas Name="canvas" DoubleTapped="OnDoubleTapped" Height="600" Width="700" Background="Aqua"/>
 				</ItemsPanelTemplate>
 				</ItemsControl.ItemsPanel>
 				<ItemsControl.DataTemplates>
