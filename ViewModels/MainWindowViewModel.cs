@@ -1,4 +1,5 @@
 using DiagramClass.Models;
+using DiagramClass.Models.SaverLoder;
 using DynamicData;
 using ReactiveUI;
 using SkiaSharp;
@@ -109,25 +110,57 @@ namespace DiagramClass.ViewModels
                 Margin = "0,0"
             });
         }
-        public void Load(string path, string extension)
+        public void Save(string path, string extension)
         {
             if (extension == "json")
             {
+                ToSerialisedListConverter toSerialisedListConverter = new ToSerialisedListConverter();
+                toSerialisedListConverter.Converter(canvasList);
+
+                string? jsonData = Newtonsoft.Json.JsonConvert.SerializeObject(toSerialisedListConverter);
+                if (jsonData != null)
+                {
+                    using (StreamWriter file = new StreamWriter(path, false))
+                    {
+                        file.Write(jsonData);
+                    }
+                }
             }
             else if (extension == "xml")
             {
+                ToSerialisedListConverter toSerialisedListConverter = new ToSerialisedListConverter();
+                toSerialisedListConverter.Converter(canvasList);
+
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(ToSerialisedListConverter));
+                using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))
+                {
+                    xmlSerializer.Serialize(fs, toSerialisedListConverter);
+                }
             }
             else if (extension == "yaml")
             {
             }
         }
-        public void Save(string path, string extension)
+        public void Load(string path, string extension)
         {
             if (extension == "json")
             {
+                CanvasList.Clear();
+                using (StreamReader file = new StreamReader(path))
+                {
+                    ToSerialisedListConverter toSerialisedListConverter = Newtonsoft.Json.JsonConvert.DeserializeObject<ToSerialisedListConverter>(file.ReadToEnd());
+                    CanvasList = toSerialisedListConverter.ConverterBack();
+                }
             }
             else if (extension == "xml")
-            {             
+            {
+                CanvasList.Clear();
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(ToSerialisedListConverter));
+                using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))
+                {
+                    ToSerialisedListConverter toSerialisedListConverter = xmlSerializer.Deserialize(fs) as ToSerialisedListConverter;
+                    CanvasList = toSerialisedListConverter.ConverterBack();
+                }
             }
             else if (extension == "yaml")
             {
