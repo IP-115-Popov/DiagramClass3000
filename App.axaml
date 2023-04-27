@@ -8,6 +8,7 @@
 
     <Application.Styles>
         <FluentTheme Mode="Light"/>
-		<StyleInclude Source="avares://DiagramClass/Views/Class.axaml"/>
+		    <StyleInclude Source="avares://DiagramClass/Views/Class.axaml"/>
+		    <StyleInclude Source="/Views/ConnectorsView/InheritanceConnector.axaml"/>
     </Application.Styles>
 </Application>

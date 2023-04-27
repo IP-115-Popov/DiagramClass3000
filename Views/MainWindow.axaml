@@ -6,7 +6,7 @@
 		xmlns:class="clr-namespace:DiagramClass.Views"
 		xmlns:models="clr-namespace:DiagramClass.Models"
 		xmlns:connecters="clr-namespace:DiagramClass.Models.Connectors"
-		xmlns:conView="clr-namespace:DiagramClass.Views.Connectors"
+		xmlns:conView="clr-namespace:DiagramClass.Views.ConnectorsView"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="DiagramClass.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
@@ -93,7 +93,7 @@
 							  />
 					</DataTemplate>
 					<DataTemplate DataType="{x:Type connecters:AddictionConnector}">
-						<conView:AddictionConnectorView StartPointCastom="{Binding StartPoint}"
+						<conView:InheritanceConnector StartPointCastom="{Binding StartPoint}"
 														EndPointCastom="{Binding EndPoint}"
 													    />
 						<!--<Line StartPoint="{Binding StartPoint}"
