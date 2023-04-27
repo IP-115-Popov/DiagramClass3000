@@ -25,6 +25,7 @@ namespace DiagramClass.Views
             {
                 if (this.DataContext is SettingsClassViewModel dataContext)
                 {
+                    dataContext.margin = myClass.Margin;
                     dataContext.myType = myClass.MyType;
                     dataContext.Attribute = myClass.Attribute;
                     dataContext.Name = myClass.Name;

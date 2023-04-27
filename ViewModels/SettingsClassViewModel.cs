@@ -17,6 +17,7 @@ namespace DiagramClass.ViewModels
     public class SettingsClassViewModel : ViewModelBase
     {
         public string? myType;
+        public string? margin;
 
         private string? attribute;
         private string? name;
@@ -134,6 +135,7 @@ namespace DiagramClass.ViewModels
         {
             return new MyClass()
             { 
+                Margin = this.margin,
                 MyType = this.myType,
                 Attribute = this.Attribute,
                 Name = this.Name,
