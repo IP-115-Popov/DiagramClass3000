@@ -12,6 +12,7 @@ using System.Reactive;
 using System.Text;
 using System.Xml.Linq;
 using System.Xml.Serialization;
+using YamlDotNet.Serialization;
 
 namespace DiagramClass.ViewModels
 {
@@ -139,6 +140,22 @@ namespace DiagramClass.ViewModels
             }
             else if (extension == "yaml")
             {
+                ToSerialisedListConverter toSerialisedListConverter = new ToSerialisedListConverter();
+                toSerialisedListConverter.Converter(canvasList);
+
+                Serializer serializer;
+                string yaml;
+
+                serializer = (Serializer)new SerializerBuilder().Build();
+
+                yaml = serializer.Serialize(toSerialisedListConverter);
+                if (yaml != null)
+                {
+                    using (StreamWriter file = new StreamWriter(path, false))
+                    {
+                        file.Write(yaml);
+                    }
+                }
             }
         }
         public void Load(string path, string extension)
@@ -164,6 +181,18 @@ namespace DiagramClass.ViewModels
             }
             else if (extension == "yaml")
             {
+                Deserializer deserializer;
+
+                deserializer = (Deserializer)new DeserializerBuilder().Build();
+
+                using (Stream stream = File.OpenRead(path))
+                {
+                    using (TextReader reader = new StreamReader(stream))
+                    {
+                        ToSerialisedListConverter toSerialisedListConverter = deserializer.Deserialize<ToSerialisedListConverter>(reader);
+                        CanvasList = toSerialisedListConverter.ConverterBack();
+                    }
+                }
             }           
         }
     }
