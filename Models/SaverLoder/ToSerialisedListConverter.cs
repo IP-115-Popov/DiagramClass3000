@@ -87,7 +87,7 @@ namespace DiagramClass.Models.SaverLoder
                     {
                         StartPoint = (((AggregationConnector)i).StartPoint).ToString(),
                         EndPoint = (((AggregationConnector)i).EndPoint).ToString(),
-                        AngleHead = ((AddictionConnector)i).AngleHead
+                        AngleHead = ((AggregationConnector)i).AngleHead
                     });
                 }
                 else if (i is CompositionConnector)
